@@ -12,9 +12,16 @@ serve(async (req) => {
   }
 
   try {
+    const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
+    
+    console.log('Keys vault function called');
+    console.log('Supabase URL configured:', !!supabaseUrl);
+    console.log('Auth header present:', !!req.headers.get('Authorization'));
+    
     const supabaseClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      supabaseUrl,
+      supabaseAnonKey,
       {
         global: {
           headers: { Authorization: req.headers.get('Authorization')! },
@@ -23,22 +30,26 @@ serve(async (req) => {
     );
 
     const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+    console.log('User check:', user?.email, 'Error:', userError?.message);
+    
     if (userError || !user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      return new Response(JSON.stringify({ error: 'Unauthorized', details: userError?.message }), {
         status: 401,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
     // Verify super_admin role
-    const { data: roles } = await supabaseClient
+    const { data: roles, error: rolesError } = await supabaseClient
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id);
     
+    console.log('Roles check:', roles, 'Error:', rolesError?.message);
+    
     const isSuperAdmin = roles?.some(r => r.role === 'super_admin');
     if (!isSuperAdmin) {
-      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+      return new Response(JSON.stringify({ error: 'Forbidden - super_admin role required', user: user.email, roles: roles }), {
         status: 403,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
