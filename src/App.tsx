@@ -1187,6 +1187,9 @@ const AppContent = () => {
               <Route path="/admin/notes" element={<AdminNotes />} />
               <Route path="/admin/data-mode" element={<AdminDataModeSettings />} />
               <Route path="/admin/users" element={<UserManagement />} />
+              {/* Admin Contacts - reuses ContactProfile but in admin context */}
+              <Route path="/admin/contacts" element={<Contacts />} />
+              <Route path="/admin/contacts/:id" element={<ContactProfile />} />
               {/* SEO Manager */}
               <Route path="/admin/seo" element={<AdminSeoList />} />
               <Route path="/admin/seo/new" element={<AdminSeoEdit />} />

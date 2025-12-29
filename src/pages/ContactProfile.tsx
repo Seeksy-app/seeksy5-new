@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -15,6 +15,8 @@ import { useState } from "react";
 export default function ContactProfile() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isAdminContext = location.pathname.startsWith('/admin');
   const [scribeOpen, setScribeOpen] = useState(false);
 
   const { data: contact, isLoading } = useQuery({
@@ -57,7 +59,7 @@ export default function ContactProfile() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate("/engagement/contacts")}
+              onClick={() => navigate(isAdminContext ? "/admin/contacts" : "/engagement/contacts")}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Contacts

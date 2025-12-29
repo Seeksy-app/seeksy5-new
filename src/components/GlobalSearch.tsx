@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Search, X, Loader2, Hash, Calendar, Users, FileText, Mail, Video, Mic, DollarSign, Settings, Zap } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -31,6 +31,10 @@ export function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Determine if we're in admin context to keep navigation within admin routes
+  const isAdminContext = location.pathname.startsWith('/admin');
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -120,7 +124,8 @@ export function GlobalSearch() {
               type: "contact" as const,
               title: c.name || "Unnamed",
               subtitle: c.email,
-              route: `/contacts/${c.id}`,
+              // Stay in admin context if currently in admin routes
+              route: isAdminContext ? `/admin/contacts/${c.id}` : `/contacts/${c.id}`,
               enabled: true,
             }))
           );
@@ -140,7 +145,7 @@ export function GlobalSearch() {
               type: "meeting" as const,
               title: m.title,
               subtitle: "Meeting",
-              route: `/meetings/${m.id}`,
+              route: isAdminContext ? `/admin/meetings/${m.id}` : `/meetings/${m.id}`,
               enabled: true,
             }))
           );
