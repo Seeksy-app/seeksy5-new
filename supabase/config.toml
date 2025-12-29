@@ -629,3 +629,6 @@ verify_jwt = true
 
 [functions.lead-export]
 verify_jwt = true
+
+[functions.test-resend-email]
+verify_jwt = false
