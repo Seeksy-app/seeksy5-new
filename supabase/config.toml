@@ -635,3 +635,6 @@ verify_jwt = false
 
 [functions.cleanup-all-users]
 verify_jwt = true
+
+[functions.bootstrap-admin]
+verify_jwt = true
