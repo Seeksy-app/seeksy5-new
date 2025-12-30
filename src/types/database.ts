@@ -15,6 +15,13 @@ export interface Database {
   }
   public: {
     Tables: {
+      // Index signature for any table not explicitly defined
+      [key: string]: {
+        Row: Record<string, any>
+        Insert: Record<string, any>
+        Update: Record<string, any>
+        Relationships?: any[]
+      }
       activity_logs: {
         Row: {
           id: string
@@ -685,12 +692,114 @@ export interface Database {
           updated_at?: string
         }
       }
+      seeksyai_conversations: {
+        Row: {
+          id: string
+          user_id: string
+          title: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      seeksyai_messages: {
+        Row: {
+          id: string
+          conversation_id: string
+          role: string
+          content: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          conversation_id: string
+          role: string
+          content: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          conversation_id?: string
+          role?: string
+          content?: string
+          created_at?: string
+        }
+      }
+      theme_preferences: {
+        Row: {
+          id: string
+          user_id: string
+          theme: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          theme?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          theme?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      feature_usage: {
+        Row: {
+          id: string
+          user_id: string
+          feature_type: string
+          usage_count: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          feature_type: string
+          usage_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          feature_type?: string
+          usage_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_feature_usage: {
+        Args: {
+          _user_id: string
+          _feature_type: string
+          _increment: number
+        }
+        Returns: void
+      }
     }
     Enums: {
       app_role: 'admin' | 'moderator' | 'user' | 'super_admin' | 'advertiser'

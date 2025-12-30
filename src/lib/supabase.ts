@@ -1,5 +1,5 @@
 // Custom Supabase client with proper typing for user's existing database
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/database';
 
 // Use environment variables (these are provided via Lovable's .env or secrets)
@@ -11,7 +11,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 // Create a properly typed Supabase client
-export const supabase = createClient<Database>(
+// Explicitly typed to ensure correct inference
+export const supabase: SupabaseClient<Database> = createClient<Database>(
   supabaseUrl || '',
   supabaseAnonKey || '',
   {
@@ -25,3 +26,6 @@ export const supabase = createClient<Database>(
 
 // Re-export types for convenience
 export type { Database } from '@/types/database';
+export type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row'];
+export type TablesInsert<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Insert'];
+export type TablesUpdate<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Update'];
