@@ -67,6 +67,8 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   resolve: {
     alias: {
+      // Redirect to our properly typed client - must come before the general @ alias
+      "@/integrations/supabase/client": path.resolve(__dirname, "./src/lib/supabaseClient.ts"),
       "@": path.resolve(__dirname, "./src"),
     },
   },

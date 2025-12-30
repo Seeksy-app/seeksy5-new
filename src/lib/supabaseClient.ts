@@ -1,18 +1,16 @@
-// Properly typed Supabase client for external Supabase project
-// This file provides type-safe access using the complete Database types
+// Properly typed Supabase client that wraps the auto-generated one
+// This file provides the correctly typed client for the user's external Supabase project
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/database';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-// Import the supabase client like this:
-// import { supabase } from "@/integrations/supabase/client";
-
+// Create the properly typed client
 export const supabase: SupabaseClient<Database> = createClient<Database>(
   SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY,
+  SUPABASE_ANON_KEY,
   {
     auth: {
       storage: localStorage,

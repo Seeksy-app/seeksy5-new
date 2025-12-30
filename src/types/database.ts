@@ -457,6 +457,17 @@ export interface Database {
           meetings_enabled: boolean | null
           contacts_enabled: boolean | null
           podcasts_enabled: boolean | null
+          sms_meeting_confirmations: boolean | null
+          sms_event_registrations: boolean | null
+          sms_ticket_assignments: boolean | null
+          sms_meeting_reminders: boolean | null
+          sms_maintenance_alerts: boolean | null
+          sms_feature_updates: boolean | null
+          sms_follower_requests: boolean | null
+          sms_new_account_alerts: boolean | null
+          my_page_video_type: string | null
+          my_page_video_id: string | null
+          my_page_video_loop: boolean | null
           created_at: string
           updated_at: string
         }
@@ -479,6 +490,17 @@ export interface Database {
           meetings_enabled?: boolean | null
           contacts_enabled?: boolean | null
           podcasts_enabled?: boolean | null
+          sms_meeting_confirmations?: boolean | null
+          sms_event_registrations?: boolean | null
+          sms_ticket_assignments?: boolean | null
+          sms_meeting_reminders?: boolean | null
+          sms_maintenance_alerts?: boolean | null
+          sms_feature_updates?: boolean | null
+          sms_follower_requests?: boolean | null
+          sms_new_account_alerts?: boolean | null
+          my_page_video_type?: string | null
+          my_page_video_id?: string | null
+          my_page_video_loop?: boolean | null
           created_at?: string
           updated_at?: string
         }
@@ -501,14 +523,98 @@ export interface Database {
           meetings_enabled?: boolean | null
           contacts_enabled?: boolean | null
           podcasts_enabled?: boolean | null
+          sms_meeting_confirmations?: boolean | null
+          sms_event_registrations?: boolean | null
+          sms_ticket_assignments?: boolean | null
+          sms_meeting_reminders?: boolean | null
+          sms_maintenance_alerts?: boolean | null
+          sms_feature_updates?: boolean | null
+          sms_follower_requests?: boolean | null
+          sms_new_account_alerts?: boolean | null
+          my_page_video_type?: string | null
+          my_page_video_id?: string | null
+          my_page_video_loop?: boolean | null
           created_at?: string
           updated_at?: string
+        }
+      }
+      ad_slots: {
+        Row: {
+          id: string
+          podcast_id: string
+          slot_type: string
+          start_time: number | null
+          end_time: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          podcast_id: string
+          slot_type: string
+          start_time?: number | null
+          end_time?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          podcast_id?: string
+          slot_type?: string
+          start_time?: number | null
+          end_time?: number | null
+          created_at?: string
+        }
+      }
+      ai_conversations: {
+        Row: {
+          id: string
+          user_id: string
+          title: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      ai_messages: {
+        Row: {
+          id: string
+          conversation_id: string
+          role: string
+          content: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          conversation_id: string
+          role: string
+          content: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          conversation_id?: string
+          role?: string
+          content?: string
+          created_at?: string
         }
       }
       profiles: {
         Row: {
           id: string
           user_id: string
+          username: string | null
           first_name: string | null
           last_name: string | null
           avatar_url: string | null
@@ -519,6 +625,7 @@ export interface Database {
         Insert: {
           id?: string
           user_id: string
+          username?: string | null
           first_name?: string | null
           last_name?: string | null
           avatar_url?: string | null
@@ -529,6 +636,7 @@ export interface Database {
         Update: {
           id?: string
           user_id?: string
+          username?: string | null
           first_name?: string | null
           last_name?: string | null
           avatar_url?: string | null
@@ -576,12 +684,6 @@ export interface Database {
           created_at?: string
           updated_at?: string
         }
-      }
-      // Allow any other table names for flexibility during migration
-      [key: string]: {
-        Row: Record<string, unknown>
-        Insert: Record<string, unknown>
-        Update: Record<string, unknown>
       }
     }
     Views: {
