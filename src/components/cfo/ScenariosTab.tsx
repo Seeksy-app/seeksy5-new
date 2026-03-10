@@ -30,13 +30,13 @@ export function ScenariosTab() {
     queryKey: ["ad-financial-projections", selectedScenario],
     queryFn: async () => {
       if (!selectedScenario) return [];
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from("ad_financial_projections")
         .select("*")
         .eq("scenario_id", selectedScenario)
         .order("month_index", { ascending: true });
       if (error) throw error;
-      return data;
+      return (data as any[]) || [];
     },
     enabled: !!selectedScenario,
   });
