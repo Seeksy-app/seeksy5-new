@@ -41,13 +41,13 @@ export function ActivityLogModal({
   const { data: activities, isLoading: activitiesLoading } = useQuery({
     queryKey: ['linkActivity', linkId],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('investor_link_activity')
         .select('*')
         .eq('link_id', linkId)
         .order('created_at', { ascending: false });
       if (error) throw error;
-      return data as Activity[];
+      return (data as Activity[]) || [];
     },
     enabled: open,
   });
