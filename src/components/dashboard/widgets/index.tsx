@@ -24,7 +24,7 @@ interface WidgetData {
 }
 
 export const ProfileViewsWidget = ({ data }: { data: WidgetData }) => (
-  <DashboardWidget title="My Page - Profile Views" icon={<TrendingUp className="h-5 w-5" />} brandColor="blue">
+  <DashboardWidget title="Profile Page - Views" icon={<TrendingUp className="h-5 w-5" />} brandColor="blue">
     <div className="text-4xl font-bold tracking-tight mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">
       {data.profileViews?.toLocaleString() || 0}
     </div>
