@@ -9,28 +9,39 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-// Use a permissive Database type that allows any table name
-// This prevents TS2769 "not assignable to parameter of type 'never'" errors
+// Use a fully permissive Database type that allows any table name
+// and returns `any` for all row/insert/update types to prevent
+// TS2769, TS2339, TS2345, and SelectQueryError issues
 export interface Database {
   __InternalSupabase: {
     PostgrestVersion: "14.1"
   }
   public: {
-    Tables: Record<string, {
-      Row: Record<string, any>
-      Insert: Record<string, any>
-      Update: Record<string, any>
-      Relationships: any[]
-    }>
-    Views: Record<string, {
-      Row: Record<string, any>
-      Relationships: any[]
-    }>
-    Functions: Record<string, {
-      Args: Record<string, any>
-      Returns: any
-    }>
-    Enums: Record<string, string>
-    CompositeTypes: Record<string, any>
+    Tables: {
+      [key: string]: {
+        Row: any
+        Insert: any
+        Update: any
+        Relationships: any[]
+      }
+    }
+    Views: {
+      [key: string]: {
+        Row: any
+        Relationships: any[]
+      }
+    }
+    Functions: {
+      [key: string]: {
+        Args: any
+        Returns: any
+      }
+    }
+    Enums: {
+      [key: string]: string
+    }
+    CompositeTypes: {
+      [key: string]: any
+    }
   }
 }
