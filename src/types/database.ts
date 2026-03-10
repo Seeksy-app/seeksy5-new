@@ -1,5 +1,5 @@
-// Fully permissive Database type that bypasses Supabase SelectQueryError
-// Using `any` for Relationships to prevent the SDK's relation validation
+// Permissive Database type for Supabase SDK
+// Uses a wildcard relationship pattern to prevent SelectQueryError
 
 export type Json =
   | string
@@ -8,6 +8,15 @@ export type Json =
   | null
   | { [key: string]: Json | undefined }
   | Json[]
+
+// A relationship entry that should match any relation name
+type WildcardRelationship = {
+  foreignKeyName: string
+  columns: [string]
+  isOneToOne: false
+  referencedRelation: string
+  referencedColumns: [string]
+}
 
 export interface Database {
   __InternalSupabase: {
@@ -19,13 +28,13 @@ export interface Database {
         Row: Record<string, any>
         Insert: Record<string, any>
         Update: Record<string, any>
-        Relationships: any
+        Relationships: [WildcardRelationship]
       }
     }
     Views: {
       [viewName: string]: {
         Row: Record<string, any>
-        Relationships: any
+        Relationships: [WildcardRelationship]
       }
     }
     Functions: {
