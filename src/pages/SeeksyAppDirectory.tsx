@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Mic, Scissors, Wand2, FolderOpen, Video, AudioLines, Podcast, Megaphone, Mail, Share2, MessageSquare, Zap, CalendarDays, Users2, FileText, BarChart3, ClipboardList, Award, Globe, Bot, PenTool, Receipt, ShieldCheck, Layers } from "lucide-react";
 import { useState } from "react";
-import TopNavigation from "@/components/homepage/TopNavigation";
+import { TopNavigation } from "@/components/homepage/TopNavigation";
 import { FooterSection } from "@/components/homepage/FooterSection";
 
 // Hero images
