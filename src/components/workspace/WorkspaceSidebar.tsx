@@ -226,10 +226,10 @@ export function WorkspaceSidebar() {
             if (dbModule) {
               return {
                 ...module,
-                name: dbModule.display_name || module.name,
-                description: dbModule.description || module.description,
-                route: dbModule.route || module.route,
-                icon: dbModule.icon || module.icon,
+                name: (dbModule as any).display_name || module.name,
+                description: (dbModule as any).description || module.description,
+                route: (dbModule as any).route || module.route,
+                icon: (dbModule as any).icon || module.icon,
               };
             }
             return module;

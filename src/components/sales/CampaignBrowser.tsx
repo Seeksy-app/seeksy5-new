@@ -195,7 +195,7 @@ export function CampaignBrowser() {
         {adCampaigns?.map((campaign) => {
           const targetingRules = campaign.targeting_rules as any;
           const targetCategories = targetingRules?.categories as string[] || [];
-          const isMatched = userCategories?.some(cat => targetCategories.includes(cat));
+          const isMatched = userCategories?.some((cat: string) => targetCategories.includes(cat));
 
           return (
             <motion.div

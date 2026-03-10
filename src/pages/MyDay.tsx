@@ -459,7 +459,7 @@ export default function MyDay() {
 
         setTopLinks(
           Object.entries(linkCounts)
-            .map(([link_url, data]) => ({ link_url, link_type: data.type, count: data.count }))
+            .map(([link_url, data]: [string, any]) => ({ link_url, link_type: data.type, count: data.count }))
             .sort((a, b) => b.count - a.count)
             .slice(0, 5)
         );
