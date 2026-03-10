@@ -199,8 +199,8 @@ function GBPLocationsContent() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>
-            {categories.map(cat => (
-              <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+            {categories.map((cat: any) => (
+              <SelectItem key={String(cat)} value={String(cat)}>{String(cat)}</SelectItem>
             ))}
           </SelectContent>
         </Select>

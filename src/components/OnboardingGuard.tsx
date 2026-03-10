@@ -28,7 +28,8 @@ export function OnboardingGuard({ children }: OnboardingGuardProps) {
   const publicRoutes = [
     '/', '/auth', '/pricing', '/about', '/terms', '/privacy', '/cookies', 
     '/security', '/apps-and-tools', '/comparison', '/signup-select',
-    '/advertiser/signup', '/demo', '/investor', '/demo-videos', '/videos'
+    '/advertiser/signup', '/demo', '/investor', '/demo-videos', '/videos',
+    '/app-directory', '/logo-asset', '/platform'
   ];
   const isPublicRoute = publicRoutes.includes(location.pathname) || 
     location.pathname.startsWith('/meet/') ||

@@ -83,7 +83,7 @@ export function EventSessionManager({ eventId, eventDate, isAdmin = false }: Eve
         .order("start_time");
 
       if (error) throw error;
-      setSessions(data || []);
+      setSessions((data as any[]) || []);
     } catch (error) {
       console.error("Error loading sessions:", error);
     } finally {

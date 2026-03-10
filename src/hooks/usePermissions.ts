@@ -84,7 +84,7 @@ export function usePermissions(): UsePermissionsReturn {
   };
 
   const canAccessModule = (module: PermissionCategory): boolean => {
-    return permissions.some(p => p.startsWith(`${module}.`));
+    return permissions.some((p: string) => p.startsWith(`${module}.`));
   };
 
   const logAccessDenied = async (permission: Permission, resource?: string) => {
@@ -104,7 +104,7 @@ export function usePermissions(): UsePermissionsReturn {
   };
 
   return {
-    permissions,
+    permissions: permissions as string[],
     isLoading,
     error: error as Error | null,
     hasPermission,

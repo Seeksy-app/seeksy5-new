@@ -65,7 +65,7 @@ export default function CreateAd() {
 
     try {
       const selectedCampaign = campaigns?.find(c => c.id === formData.campaign_id);
-      const advertiserId = selectedCampaign?.advertisers?.id;
+      const advertiserId = (selectedCampaign as any)?.advertisers?.id;
 
       if (!advertiserId) {
         throw new Error("Could not determine advertiser");
@@ -189,7 +189,7 @@ export default function CreateAd() {
                 <SelectContent>
                   {campaigns?.map((campaign) => (
                     <SelectItem key={campaign.id} value={campaign.id}>
-                      {campaign.name} ({campaign.advertisers?.company_name})
+                      {campaign.name} ({(campaign as any).advertisers?.company_name})
                     </SelectItem>
                   ))}
                 </SelectContent>

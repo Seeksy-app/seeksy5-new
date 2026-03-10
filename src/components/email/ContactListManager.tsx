@@ -110,7 +110,7 @@ export const ContactListManager = () => {
                   <div>
                     <p className="font-medium">{list.name}</p>
                     <p className="text-sm text-muted-foreground">
-                      {list.contact_list_members?.[0]?.count || 0} contacts
+                      {(list as any).contact_list_members?.[0]?.count || 0} contacts
                     </p>
                   </div>
                 </div>

@@ -159,7 +159,7 @@ export function AwardsRevenueTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {programs.map((program) => (
+                {programs.map((program: any) => (
                   <TableRow key={program.id}>
                     <TableCell className="font-medium">{program.title}</TableCell>
                     <TableCell>

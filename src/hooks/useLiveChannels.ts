@@ -27,7 +27,7 @@ export function useLiveChannels() {
         .order('started_at', { ascending: false });
 
       if (error) throw error;
-      setChannels(data || []);
+      setChannels((data as any[]) || []);
     } catch (err) {
       console.error('Error fetching live channels:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch channels');

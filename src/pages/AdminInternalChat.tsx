@@ -150,7 +150,7 @@ export default function AdminInternalChat() {
         .select()
         .single();
 
-      teamData = newTeam;
+      teamData = newTeam as any;
     }
 
     // Add current user to admin team if not already

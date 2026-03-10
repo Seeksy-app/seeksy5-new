@@ -71,7 +71,7 @@ export function TaskComments({ taskId, teamMembers }: TaskCommentsProps) {
         user: profileMap.get(comment.user_id) || null,
       }));
 
-      setComments(commentsWithUsers);
+      setComments(commentsWithUsers as any[]);
     } else {
       setComments([]);
     }

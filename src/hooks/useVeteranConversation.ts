@@ -54,7 +54,7 @@ export function useVeteranConversation(user: User | null, conversationIdParam: s
         .single();
 
       if (data) {
-        setProfile(data);
+        setProfile(data as any);
         if (data.service_status && data.branch_of_service) {
           setIntakeData({
             status: data.service_status,

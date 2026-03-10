@@ -41,7 +41,7 @@ export function useStudioSession() {
 
       if (error) throw error;
 
-      setSession(data);
+      setSession(data as any);
       return data;
     } catch (error) {
       console.error("Error creating studio session:", error);
@@ -68,7 +68,7 @@ export function useStudioSession() {
 
       if (error) throw error;
 
-      setSession(data);
+      setSession(data as any);
       return data;
     } catch (error) {
       console.error("Error updating studio session:", error);

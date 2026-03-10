@@ -198,7 +198,7 @@ export const CampaignBuilder = ({ onCampaignCreated }: CampaignBuilderProps) => 
             <SelectContent>
               {lists?.map((list) => (
                 <SelectItem key={list.id} value={list.id}>
-                  {list.name} ({list.contact_list_members?.[0]?.count || 0} contacts)
+                  {list.name} ({(list as any).contact_list_members?.[0]?.count || 0} contacts)
                 </SelectItem>
               ))}
             </SelectContent>

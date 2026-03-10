@@ -43,7 +43,7 @@ export function useModuleGroups() {
       if (assignmentsError) throw assignmentsError;
 
       // Combine groups with their modules
-      const groupsWithModules: GroupWithModules[] = (groups || []).map((group) => ({
+      const groupsWithModules: GroupWithModules[] = ((groups as any[]) || []).map((group: any) => ({
         ...group,
         primaryModules: (assignments || [])
           .filter((a) => a.group_id === group.id && a.relationship_type === "primary")

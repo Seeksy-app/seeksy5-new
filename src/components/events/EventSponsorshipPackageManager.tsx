@@ -210,7 +210,7 @@ export function EventSponsorshipPackageManager({ eventId }: EventSponsorshipPack
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {packages?.map((pkg) => {
-          const paidSponsors = pkg.event_sponsorships?.filter((s: any) => s.status === 'paid').length || 0;
+          const paidSponsors = (pkg as any).event_sponsorships?.filter((s: any) => s.status === 'paid').length || 0;
           return (
             <Card key={pkg.id}>
               <CardHeader>

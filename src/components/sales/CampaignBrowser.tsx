@@ -195,7 +195,7 @@ export function CampaignBrowser() {
         {adCampaigns?.map((campaign) => {
           const targetingRules = campaign.targeting_rules as any;
           const targetCategories = targetingRules?.categories as string[] || [];
-          const isMatched = userCategories?.some(cat => targetCategories.includes(cat));
+          const isMatched = userCategories?.some((cat: string) => targetCategories.includes(cat));
 
           return (
             <motion.div
@@ -343,11 +343,11 @@ export function CampaignBrowser() {
                   </div>
                 </div>
 
-                {campaign.campaign_properties && campaign.campaign_properties.length > 0 && (
+                {(campaign as any).campaign_properties && (campaign as any).campaign_properties.length > 0 && (
                   <div className="space-y-2">
                     <p className="text-sm font-medium">Available Properties:</p>
                     <div className="flex flex-wrap gap-2">
-                      {campaign.campaign_properties.map((prop) => (
+                      {(campaign as any).campaign_properties.map((prop: any) => (
                         <Badge key={prop.id} variant="outline">
                           {prop.property_type}: {prop.property_name}
                         </Badge>

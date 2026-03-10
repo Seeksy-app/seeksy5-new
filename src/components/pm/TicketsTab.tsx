@@ -113,7 +113,7 @@ export const TicketsTab = ({ userId }: TicketsTabProps) => {
     const query = searchQuery.toLowerCase();
     return tickets.filter((ticket) => {
       const ticketId = ticket.id.toLowerCase();
-      const contactName = ticket.contacts?.name?.toLowerCase() || "";
+      const contactName = (ticket as any).contacts?.name?.toLowerCase() || "";
       const title = ticket.title?.toLowerCase() || "";
       const description = ticket.description?.toLowerCase() || "";
       
@@ -204,7 +204,7 @@ export const TicketsTab = ({ userId }: TicketsTabProps) => {
               <CardContent>
                 <div className="flex justify-between items-center text-sm text-muted-foreground">
                   <span>
-                    {ticket.contacts?.company || ticket.contacts?.name || "No contact"}
+                    {(ticket as any).contacts?.company || (ticket as any).contacts?.name || "No contact"}
                   </span>
                   <span>{new Date(ticket.created_at).toLocaleDateString()}</span>
                 </div>
