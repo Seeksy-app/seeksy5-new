@@ -30,8 +30,8 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${productiveTeamBg})` }}
       />
-      {/* Gradient overlay matching hero pattern */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Cool dark overlay like WorkReady reference */}
+      <div className="absolute inset-0 bg-slate-900/50" />
 
       {/* Floating card - 30% card opacity with backdrop-blur-sm */}
       <motion.div
