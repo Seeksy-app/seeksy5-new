@@ -259,42 +259,13 @@ function AppCard({ module }: { module: SeeksyModule }) {
 
 export default function SeeksyAppDirectory() {
   const [tab, setTab] = useState<"bundles" | "apps">("bundles");
-  const [copiedAll, setCopiedAll] = useState(false);
-
-  const copyAll = () => {
-    const text =
-      tab === "apps"
-        ? SEEKSY_MODULES.map((m) => {
-            const d = APP_DETAILS[m.id];
-            return d
-              ? `## ${m.name}\n${d.tagline}\n\n${d.longDescription}\n\nFeatures:\n${d.features.map(f => `• ${f}`).join('\n')}\n\nBest for: ${d.bestFor.join(', ')}`
-              : `## ${m.name}\n${m.description}`;
-          }).join("\n\n---\n\n")
-        : SEEKSY_COLLECTIONS.map(
-            (c) => `## ${c.name}\n${c.description}\n\nIncludes: ${c.includedApps.join(", ")}`
-          ).join("\n\n---\n\n");
-    navigator.clipboard.writeText(text);
-    setCopiedAll(true);
-    setTimeout(() => setCopiedAll(false), 2000);
-  };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Nav removed */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Seeksy App Directory</h1>
-            <p className="text-muted-foreground mt-1">
-              {tab === "bundles"
-                ? `${SEEKSY_COLLECTIONS.length} curated bundles with descriptions. Click the copy icon on any card to copy its description.`
-                : `All ${SEEKSY_MODULES.length} Seeksy modules with descriptions. Click the copy icon on any card to copy its description.`}
-            </p>
-          </div>
-          <Button onClick={copyAll} variant="outline" className="gap-2 shrink-0">
-            {copiedAll ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            {copiedAll ? "Copied!" : "Copy All"}
-          </Button>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground">Seeksy App Directory</h1>
         </div>
 
         {/* Pill Tabs */}
