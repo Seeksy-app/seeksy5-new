@@ -93,7 +93,7 @@ const COLLECTION_HERO_MAP: Record<string, string> = {
   "marketing-hub": heroMarketing,
   "events-meetings": heroEvents,
   "crm-business": heroCrm,
-  "identity-profile": heroIdentity,
+  "identity-profile": heroNilProtection,
   "ai-tools": heroAi,
 };
 
