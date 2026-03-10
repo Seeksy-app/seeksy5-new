@@ -262,10 +262,27 @@ function AppCard({ module }: { module: SeeksyModule }) {
 
 export default function SeeksyAppDirectory() {
   const [tab, setTab] = useState<"bundles" | "apps">("bundles");
+  const { email, sessionId, startSession } = useProspectusGate();
+
+  // Track session duration
+  useUpdateSessionDuration(sessionId);
+
+  // Track current tab as page view
+  useProspectusPageView(sessionId, tab === "bundles" ? "Bundles" : "All Apps");
+
+  // Track individual card views
+  const trackCardView = (name: string) => {
+    if (!sessionId) return;
+    (supabase.from("prospectus_page_views") as any)
+      .insert({ session_id: sessionId, page_name: name, viewed_at: new Date().toISOString() });
+  };
+
+  if (!email) {
+    return <EmailGate onSubmit={startSession} />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Nav removed */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">Seeksy App Directory</h1>
@@ -298,13 +315,17 @@ export default function SeeksyAppDirectory() {
         {tab === "bundles" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SEEKSY_COLLECTIONS.map((collection) => (
-              <BundleCard key={collection.id} collection={collection} />
+              <div key={collection.id} onMouseEnter={() => trackCardView(collection.name)}>
+                <BundleCard collection={collection} />
+              </div>
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SEEKSY_MODULES.map((module) => (
-              <AppCard key={module.id} module={module} />
+              <div key={module.id} onMouseEnter={() => trackCardView(module.name)}>
+                <AppCard module={module} />
+              </div>
             ))}
           </div>
         )}
