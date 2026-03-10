@@ -82,7 +82,7 @@ export default function AdvertiserCampaigns() {
             }) || [];
 
             // Count live creators (those actually displaying this ad)
-            const adId = campaign.audio_ads?.[0]?.id;
+            const adId = (campaign as any).audio_ads?.[0]?.id;
             const liveCount = matched.filter((profile: any) => 
               profile.my_page_ad_id === adId && profile.my_page_video_type === 'ad'
             ).length;

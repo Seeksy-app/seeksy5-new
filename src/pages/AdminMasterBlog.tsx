@@ -80,7 +80,7 @@ const AdminMasterBlog = () => {
             .eq("id", post.user_id)
             .single();
           
-          return { ...post, profile };
+          return { ...post, profile } as any;
         })
       );
 

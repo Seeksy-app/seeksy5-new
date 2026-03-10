@@ -191,8 +191,8 @@ export default function AdvertiserCampaignDetail() {
                   </Badge>
                   {campaign.ad_creatives && campaign.ad_creatives.length > 0 && (
                     <Badge variant="outline">
-                      {campaign.ad_creatives[0].format === "video" ? "📹 Video" : 
-                       campaign.audio_ads?.[0]?.ad_type === "conversational" ? "🎙️ Conversational" : "🔊 Audio"} Ad
+                      {(campaign as any).ad_creatives[0].format === "video" ? "📹 Video" : 
+                       (campaign as any).audio_ads?.[0]?.ad_type === "conversational" ? "🎙️ Conversational" : "🔊 Audio"} Ad
                     </Badge>
                   )}
                 </div>

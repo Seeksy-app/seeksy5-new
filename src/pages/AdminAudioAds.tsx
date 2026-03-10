@@ -53,7 +53,7 @@ export default function AdminAudioAds() {
           <div className="text-center py-12 text-muted-foreground">Loading ads...</div>
         ) : audioAds && audioAds.length > 0 ? (
           <div className="grid gap-4">
-            {audioAds.map((ad) => (
+            {audioAds.map((ad: any) => (
               <Card key={ad.id}>
                 <CardHeader>
                   <div className="flex items-start justify-between">
