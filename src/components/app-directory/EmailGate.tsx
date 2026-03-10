@@ -41,8 +41,7 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${productiveTeamBg})` }}
       />
-      {/* Warm, subtle tint — NOT dark. Lets the photo breathe. */}
-      <div className="absolute inset-0 bg-slate-800/30" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Frosted white glass card — light, airy, WorkReady-style */}
       <motion.div
