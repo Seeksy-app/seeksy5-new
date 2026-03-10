@@ -27,34 +27,10 @@ export const IdentityRightsSection = () => {
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                 <Shield className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-bold text-lg">Face Identity Verification</h3>
+              <h3 className="font-bold text-lg">Commercial Misappropriation</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Cryptographic face fingerprinting with blockchain-secured proof of ownership
-            </p>
-          </Card>
-
-          <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary/20">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <CheckCircle className="h-5 w-5 text-primary" />
-              </div>
-              <h3 className="font-bold text-lg">Voice Identity Verification</h3>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Voice fingerprinting that travels with your audio across all platforms
-            </p>
-          </Card>
-
-          <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary/20">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Lock className="h-5 w-5 text-primary" />
-              </div>
-              <h3 className="font-bold text-lg">Blockchain Identity Certificates</h3>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              On-chain certificates proving authenticity and ownership via Polygon network
+              Prevent brands from using your photo, name, or likeness in ads or merchandise without permission
             </p>
           </Card>
 
@@ -63,22 +39,22 @@ export const IdentityRightsSection = () => {
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                 <Eye className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-bold text-lg">Granular Permissions</h3>
+              <h3 className="font-bold text-lg">AI & Digital Replica Defense</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Control AI use, advertiser access, clip usage, and training data permissions
+              Protect against deepfakes, unauthorized AI-generated versions of your voice or image, and virtual avatars
             </p>
           </Card>
 
           <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary/20">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Shield className="h-5 w-5 text-primary" />
+                <Lock className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-bold text-lg">Public Creator Identity Page</h3>
+              <h3 className="font-bold text-lg">Copyrighted Content</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Shareable verification page showing your certified identity assets
+              Protect original photos, videos, written text, and audio from being reposted or used without authorization
             </p>
           </Card>
 
@@ -87,10 +63,34 @@ export const IdentityRightsSection = () => {
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                 <CheckCircle className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-bold text-lg">Transparent Audit Logs</h3>
+              <h3 className="font-bold text-lg">Brand Reputation Control</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Every identity use is recorded on-chain for transparency and security
+              Prevent false endorsements and control which brands or content you are associated with
+            </p>
+          </Card>
+
+          <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary/20">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <Shield className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-bold text-lg">Usage Rights & Licensing</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Limit how long and where brands can use your content — control duration, platforms, and exclusivity
+            </p>
+          </Card>
+
+          <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary/20">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <Lock className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-bold text-lg">Impersonation & Privacy</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Fight against fake accounts, impersonation scams, and protect personal information and online safety
             </p>
           </Card>
         </div>
