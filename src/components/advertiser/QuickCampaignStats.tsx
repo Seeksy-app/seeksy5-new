@@ -145,7 +145,9 @@ export function QuickCampaignStats({ campaignId }: QuickCampaignStatsProps) {
             <div>
               <h4 className="text-sm font-medium mb-3">Top Performing Creators</h4>
               <div className="space-y-2">
-                {topCreators.map(([creatorId, data]) => (
+                {topCreators.map(([creatorId, rawData]) => {
+                  const data = rawData as any;
+                  return (
                   <div
                     key={creatorId}
                     className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border"
@@ -166,7 +168,8 @@ export function QuickCampaignStats({ campaignId }: QuickCampaignStatsProps) {
                     </div>
                     <Badge variant="secondary">{data.count} impressions</Badge>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

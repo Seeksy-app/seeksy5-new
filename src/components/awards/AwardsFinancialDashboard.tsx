@@ -39,12 +39,11 @@ export function AwardsFinancialDashboard({ programId }: AwardsFinancialDashboard
         .select("*")
         .eq("program_id", programId);
 
-      // Calculate totals
       const allTransactions = [
         ...(sponsorships || []),
         ...(nominations || []),
         ...(registrations || []),
-      ];
+      ] as any[];
 
       const totalCollected = allTransactions
         .filter((t) => t.status === "paid")
@@ -54,20 +53,22 @@ export function AwardsFinancialDashboard({ programId }: AwardsFinancialDashboard
         .filter((t) => t.status === "pending")
         .reduce((sum, t) => sum + Number(t.amount_paid), 0);
 
-      const totalPaid = (payouts || [])
-        .filter((p) => p.status === "completed")
-        .reduce((sum, p) => sum + Number(p.net_amount), 0);
+      const payoutsArr = (payouts || []) as any[];
+      const totalPaid = payoutsArr
+        .filter((p: any) => p.status === "completed")
+        .reduce((sum: number, p: any) => sum + Number(p.net_amount), 0);
 
       const held = totalCollected - totalPaid;
 
-      const feeConfig = (program?.fee_configuration as any) || {
+      const prog = program as any;
+      const feeConfig = (prog?.fee_configuration as any) || {
         creator_percentage: 4.0,
         platform_processing_fee: 10.95,
         platform_percentage: 4.0,
       };
 
-      const platformFees = (payouts || []).reduce(
-        (sum, p) => sum + Number(p.platform_fee || 0),
+      const platformFees = payoutsArr.reduce(
+        (sum: number, p: any) => sum + Number(p.platform_fee || 0),
         0
       );
 
@@ -77,19 +78,19 @@ export function AwardsFinancialDashboard({ programId }: AwardsFinancialDashboard
         totalPaid,
         held,
         platformFees,
-        payoutScheduledDate: program?.payout_scheduled_date,
-        ceremonyDate: program?.ceremony_date,
+        payoutScheduledDate: prog?.payout_scheduled_date,
+        ceremonyDate: prog?.ceremony_date,
         feeConfig,
         breakdown: {
-          sponsorships: (sponsorships || [])
-            .filter((s) => s.status === "paid")
-            .reduce((sum, s) => sum + Number(s.amount_paid), 0),
-          nominations: (nominations || [])
-            .filter((n) => n.status === "paid")
-            .reduce((sum, n) => sum + Number(n.amount_paid), 0),
-          registrations: (registrations || [])
-            .filter((r) => r.status === "paid")
-            .reduce((sum, r) => sum + Number(r.amount_paid), 0),
+          sponsorships: ((sponsorships || []) as any[])
+            .filter((s: any) => s.status === "paid")
+            .reduce((sum: number, s: any) => sum + Number(s.amount_paid), 0),
+          nominations: ((nominations || []) as any[])
+            .filter((n: any) => n.status === "paid")
+            .reduce((sum: number, n: any) => sum + Number(n.amount_paid), 0),
+          registrations: ((registrations || []) as any[])
+            .filter((r: any) => r.status === "paid")
+            .reduce((sum: number, r: any) => sum + Number(r.amount_paid), 0),
         },
       };
     },
