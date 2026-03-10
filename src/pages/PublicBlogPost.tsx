@@ -208,7 +208,8 @@ const PublicBlogPost = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+      <TopNavigation />
+      <div className="container mx-auto px-4 py-8 pt-24">
         <div className="flex gap-8 max-w-[1140px] mx-auto">
           {/* Main Content - max 720px */}
           <article className="flex-1 max-w-[720px]">
