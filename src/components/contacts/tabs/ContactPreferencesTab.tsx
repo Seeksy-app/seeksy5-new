@@ -34,7 +34,7 @@ export function ContactPreferencesTab({ contactId }: ContactPreferencesTabProps)
 
   const updatePreferences = useMutation({
     mutationFn: async (newPreferences: any) => {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from("contact_preferences")
         .upsert({
           contact_id: contactId,

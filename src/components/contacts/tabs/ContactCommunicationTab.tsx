@@ -32,14 +32,14 @@ export function ContactCommunicationTab({ contactId }: ContactCommunicationTabPr
       if (!contact?.email) return [];
 
       // Get email logs
-      const { data } = await supabase
+      const { data } = await (supabase as any)
         .from("email_logs")
         .select("id, subject, status, sent_at, recipient_email")
         .eq("recipient_email", contact.email)
         .order("sent_at", { ascending: false })
         .limit(50);
 
-      return (data || []) as EmailLog[];
+      return ((data as any[]) || []) as EmailLog[];
     },
   });
 

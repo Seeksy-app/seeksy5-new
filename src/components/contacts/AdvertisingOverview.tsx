@@ -47,7 +47,7 @@ export const AdvertisingOverview = ({ contact }: AdvertisingOverviewProps) => {
       
       const advertiserIds = linkedAdvertisers.map(a => a.id);
       
-      const { data: campaigns, error } = await supabase
+      const { data: campaigns, error } = await (supabase as any)
         .from("ad_campaigns")
         .select("*")
         .in("advertiser_id", advertiserIds);

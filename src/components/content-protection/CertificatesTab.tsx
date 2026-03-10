@@ -13,7 +13,7 @@ export const CertificatesTab = () => {
     queryFn: async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user?.id) return [];
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from("protected_content")
         .select("*")
         .eq("user_id", user.id)
@@ -21,7 +21,7 @@ export const CertificatesTab = () => {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      return data || [];
+      return (data as any[]) || [];
     },
   });
 
