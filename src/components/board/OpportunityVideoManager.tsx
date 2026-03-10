@@ -36,8 +36,8 @@ export function OpportunityVideoManager({ opportunityId, opportunityName }: Oppo
   const { data: attachedVideos, refetch: refetchAttached } = useQuery<AttachedVideo[]>({
     queryKey: ["opportunity-videos", opportunityId],
     queryFn: async () => {
-      const result = await (supabase
-        .from("sales_opportunity_videos") as any)
+      const result = await (supabase as any)
+        .from("sales_opportunity_videos")
         .select("id, video_id, display_order")
         .eq("opportunity_id", opportunityId)
         .order("display_order");
