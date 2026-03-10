@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, Eye, CheckCircle2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Users, Eye, CheckCircle2, PlusCircle, Check } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { FooterSection } from "@/components/homepage/FooterSection";
 import { SEEKSY_COLLECTIONS, type SeeksyCollection } from "@/components/modules/collectionData";
@@ -10,6 +10,9 @@ import { SEEKSY_MODULES, type SeeksyModule, MODULE_CATEGORIES } from "@/componen
 import { EmailGate } from "@/components/app-directory/EmailGate";
 import { useProspectusGate, useProspectusPageView, useUpdateSessionDuration } from "@/hooks/useProspectusTracking";
 import { supabase } from "@/integrations/supabase/client";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Hero images
 import heroStudio from "@/assets/app-hero-studio.jpg";
