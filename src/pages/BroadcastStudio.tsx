@@ -47,7 +47,7 @@ export default function BroadcastStudio() {
   // Multi-Platform Settings
   const [audioOnlyMode, setAudioOnlyMode] = useState(false);
   const [platforms, setPlatforms] = useState({
-    myPage: { enabled: true, paired: true, title: 'My Page', icon: 'Users' },
+    myPage: { enabled: true, paired: true, title: 'Shareable Profile Page', icon: 'Users' },
     youtube: { enabled: false, paired: false, title: 'YouTube', icon: 'Youtube' },
     spotify: { enabled: false, paired: false, title: 'Spotify', icon: 'Music' }
   });
@@ -410,7 +410,7 @@ export default function BroadcastStudio() {
 
       toast({
         title: "🎉 You're Live!",
-        description: "Broadcasting to My Page. Voice authentication active.",
+        description: "Broadcasting to your profile page. Voice authentication active.",
       });
 
       // Start real-time features

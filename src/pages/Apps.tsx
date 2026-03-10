@@ -146,8 +146,8 @@ const categories: Category[] = [
     tooltipData: {
       purpose: "Everything related to who you are and how you show up publicly",
       bestForUsers: "Creators building their personal brand",
-      recommendedModules: ["My Page Builder", "Identity & Verification"],
-      exampleWorkflows: "Verify identity → Build My Page → Share link → Track visitors"
+      recommendedModules: ["Shareable Profile Page", "Identity & Verification"],
+      exampleWorkflows: "Verify identity → Build Profile Page → Share link → Track visitors"
     }
   },
   { 
@@ -472,7 +472,7 @@ const modules: Module[] = [
   // Identity & Profile Collection
   {
     id: "my-page",
-    name: "My Page Builder",
+    name: "Shareable Profile Page",
     description: "Build your personal landing page",
     icon: Layout,
     status: "active",
@@ -492,7 +492,7 @@ const modules: Module[] = [
     collection: "identity",
     route: "/identity",
     isNew: true,
-    recommendedWith: ["My Page Builder"],
+    recommendedWith: ["Shareable Profile Page"],
     creditEstimate: 20,
   },
   {
@@ -693,7 +693,7 @@ const modules: Module[] = [
   },
   {
     id: "my-page-streaming",
-    name: "My Page Streaming",
+    name: "Profile Page Streaming",
     description: "Stream directly on your creator page",
     icon: Video,
     status: "coming_soon",

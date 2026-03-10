@@ -170,7 +170,7 @@ export default function ProfileEdit() {
               <ArrowLeft className="w-5 h-5" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold">Edit My Page</h1>
+              <h1 className="text-2xl font-bold">Edit Shareable Profile Page</h1>
               <p className="text-muted-foreground text-sm">Customize your profile</p>
             </div>
           </div>
@@ -619,12 +619,12 @@ export default function ProfileEdit() {
                   <div className="space-y-4">
                     <div>
                       <Label className="text-sm font-medium mb-3 block">Seeksy Apps</Label>
-                      <p className="text-xs text-muted-foreground mb-3">Only Streaming is available for My Page</p>
+                      <p className="text-xs text-muted-foreground mb-3">Only Streaming is available for your Shareable Profile Page</p>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-sm font-medium">Streaming</p>
-                            <p className="text-xs text-muted-foreground">Show streaming on My Page</p>
+                            <p className="text-xs text-muted-foreground">Show streaming on your profile page</p>
                           </div>
                           <Switch checked={true} disabled />
                         </div>
@@ -853,7 +853,7 @@ export default function ProfileEdit() {
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Streaming</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Enable streaming on your My Page
+                    Enable streaming on your Shareable Profile Page
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-4 border rounded-lg">
@@ -867,7 +867,7 @@ export default function ProfileEdit() {
                     <div className="mt-6 p-4 bg-muted/50 rounded-lg">
                       <h4 className="text-sm font-semibold mb-2">💡 Go Live</h4>
                       <p className="text-xs text-muted-foreground mb-3">
-                        Go to Studio to start streaming live on your My Page
+                        Go to Studio to start streaming live on your profile page
                       </p>
                       <Button variant="outline" size="sm" className="w-full" onClick={() => navigate("/studio")}>
                         Open Studio to Go Live

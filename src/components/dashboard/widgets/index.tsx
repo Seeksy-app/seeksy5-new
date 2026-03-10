@@ -24,7 +24,7 @@ interface WidgetData {
 }
 
 export const ProfileViewsWidget = ({ data }: { data: WidgetData }) => (
-  <DashboardWidget title="My Page - Profile Views" icon={<TrendingUp className="h-5 w-5" />} brandColor="blue">
+  <DashboardWidget title="Profile Page - Views" icon={<TrendingUp className="h-5 w-5" />} brandColor="blue">
     <div className="text-4xl font-bold tracking-tight mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">
       {data.profileViews?.toLocaleString() || 0}
     </div>
@@ -39,7 +39,7 @@ export const ProfileViewsWidget = ({ data }: { data: WidgetData }) => (
 );
 
 export const LinkClicksWidget = ({ data }: { data: WidgetData }) => (
-  <DashboardWidget title="My Page - Link Clicks" icon={<MousePointerClick className="h-5 w-5" />} brandColor="navy">
+  <DashboardWidget title="Profile Page - Link Clicks" icon={<MousePointerClick className="h-5 w-5" />} brandColor="navy">
     <div className="text-4xl font-bold tracking-tight mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">
       {data.linkClicks?.toLocaleString() || 0}
     </div>
@@ -66,7 +66,7 @@ export const EngagementWidget = ({ data }: { data: WidgetData }) => (
   <DashboardWidget 
     title={
       <div className="flex items-center gap-2">
-        <span>My Page - Engagement Rate</span>
+        <span>Profile Page - Engagement Rate</span>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
