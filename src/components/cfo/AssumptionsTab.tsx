@@ -32,13 +32,13 @@ export function AssumptionsTab() {
     queryKey: ["ad-financial-assumptions", defaultScenario?.id],
     queryFn: async () => {
       if (!defaultScenario?.id) return null;
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from("ad_financial_assumptions")
         .select("*")
         .eq("scenario_id", defaultScenario.id)
         .single();
       if (error) throw error;
-      return data;
+      return data as any;
     },
     enabled: !!defaultScenario?.id,
   });
