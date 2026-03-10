@@ -13,32 +13,28 @@ export function AwardsFinancialDashboard({ programId }: AwardsFinancialDashboard
     queryKey: ["awards-financials", programId],
     queryFn: async () => {
       // Get program details
-      const { data: program } = await supabase
+      const { data: program } = await (supabase as any)
         .from("awards_programs")
         .select("*")
         .eq("id", programId)
         .single();
 
-      // Get all sponsorships
-      const { data: sponsorships } = await supabase
+      const { data: sponsorships } = await (supabase as any)
         .from("award_sponsorships")
         .select("amount_paid, status, paid_at")
         .eq("program_id", programId);
 
-      // Get all self-nominations
-      const { data: nominations } = await supabase
+      const { data: nominations } = await (supabase as any)
         .from("award_self_nominations")
         .select("amount_paid, status, paid_at")
         .eq("program_id", programId);
 
-      // Get all registrations
-      const { data: registrations } = await supabase
+      const { data: registrations } = await (supabase as any)
         .from("award_registrations")
         .select("amount_paid, status, paid_at")
         .eq("program_id", programId);
 
-      // Get all payouts
-      const { data: payouts } = await supabase
+      const { data: payouts } = await (supabase as any)
         .from("award_payouts")
         .select("*")
         .eq("program_id", programId);
