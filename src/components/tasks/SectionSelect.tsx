@@ -70,7 +70,7 @@ export function SectionSelect({ value, onValueChange }: SectionSelectProps) {
       return;
     }
 
-    setSections(data);
+    setSections(data as any[]);
   };
 
   const createDefaultSections = async (userId: string) => {
