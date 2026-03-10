@@ -45,13 +45,7 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="font-bold uppercase"
-          style={{
-            fontSize: "12px",
-            letterSpacing: "2px",
-            color: "#2C6BED",
-            marginBottom: "18px",
-          }}
+          className="font-bold uppercase text-xs tracking-[2px] text-primary mb-4"
         >
           Explore the platform
         </motion.p>
@@ -61,16 +55,15 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-black"
+          className="font-black text-foreground"
           style={{
             fontSize: "clamp(32px, 5vw, 52px)",
             lineHeight: 1.08,
             letterSpacing: "-1.5px",
-            color: "#0B1220",
           }}
         >
           Seeksy App{" "}
-          <span style={{ color: "#2C6BED" }}>Directory.</span>
+          <span className="text-primary">Directory.</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -78,15 +71,7 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
-          style={{
-            fontSize: "16px",
-            lineHeight: 1.6,
-            color: "#475569",
-            marginTop: "14px",
-            maxWidth: "440px",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
+          className="text-base leading-relaxed text-muted-foreground mt-3.5 max-w-[440px] mx-auto"
         >
           A suite of 35+ AI-first workplace applications — available for enterprise licensing, partnership, or strategic acquisition.
         </motion.p>
