@@ -1,5 +1,5 @@
-// Custom database types - intentionally permissive to allow all table references
-// The auto-generated types.ts doesn't cover all tables in the database
+// Fully permissive Database type - allows any table, any column, any relation
+// This is an interim solution until the auto-generated types cover all tables
 
 export type Json =
   | string
@@ -9,39 +9,23 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-// Use a fully permissive Database type that allows any table name
-// and returns `any` for all row/insert/update types to prevent
-// TS2769, TS2339, TS2345, and SelectQueryError issues
-export interface Database {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyTable = {
+  Row: Record<string, any> & { [key: string]: any }
+  Insert: Record<string, any> & { [key: string]: any }
+  Update: Record<string, any> & { [key: string]: any }
+  Relationships: any[]
+}
+
+export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.1"
   }
   public: {
-    Tables: {
-      [key: string]: {
-        Row: any
-        Insert: any
-        Update: any
-        Relationships: any[]
-      }
-    }
-    Views: {
-      [key: string]: {
-        Row: any
-        Relationships: any[]
-      }
-    }
-    Functions: {
-      [key: string]: {
-        Args: any
-        Returns: any
-      }
-    }
-    Enums: {
-      [key: string]: string
-    }
-    CompositeTypes: {
-      [key: string]: any
-    }
+    Tables: Record<string, AnyTable> & { [key: string]: AnyTable }
+    Views: Record<string, { Row: Record<string, any>; Relationships: any[] }>
+    Functions: Record<string, { Args: Record<string, any>; Returns: any }>
+    Enums: Record<string, string>
+    CompositeTypes: Record<string, any>
   }
 }
