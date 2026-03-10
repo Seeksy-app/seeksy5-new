@@ -130,7 +130,7 @@ export const DocumentsTab = ({ userId }: DocumentsTabProps) => {
               </CardHeader>
               <CardContent>
                 <div className="flex justify-between items-center text-sm text-muted-foreground">
-                  <span>{doc.client?.company_name || doc.client?.contact_name || "No client"}</span>
+                  <span>{(doc as any).client?.company_name || (doc as any).client?.contact_name || "No client"}</span>
                   <span>Sent: {new Date(doc.sent_at).toLocaleDateString()}</span>
                 </div>
                 {doc.status === "pending" && (

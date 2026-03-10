@@ -115,7 +115,7 @@ export default function CampaignAlerts() {
         <Badge>{alerts.length}</Badge>
       </div>
 
-      {alerts.map((alert) => (
+      {alerts.map((alert: any) => (
         <Card key={alert.id} className="border-l-4 border-l-yellow-500">
           <CardHeader>
             <div className="flex justify-between items-start">

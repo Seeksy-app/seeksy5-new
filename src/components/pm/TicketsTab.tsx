@@ -204,7 +204,7 @@ export const TicketsTab = ({ userId }: TicketsTabProps) => {
               <CardContent>
                 <div className="flex justify-between items-center text-sm text-muted-foreground">
                   <span>
-                    {ticket.contacts?.company || ticket.contacts?.name || "No contact"}
+                    {(ticket as any).contacts?.company || (ticket as any).contacts?.name || "No contact"}
                   </span>
                   <span>{new Date(ticket.created_at).toLocaleDateString()}</span>
                 </div>

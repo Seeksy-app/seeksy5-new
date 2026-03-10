@@ -79,10 +79,10 @@ export const EmailActivityFeed = ({ userId }: EmailActivityFeedProps) => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">
-                    {event.contacts?.name || event.contacts?.email || "Unknown contact"}
+                    {(event as any).contacts?.name || (event as any).contacts?.email || "Unknown contact"}
                   </p>
                   <p className="text-xs text-muted-foreground truncate">
-                    {event.event_type} • {event.email_campaigns?.subject || "Campaign"}
+                    {event.event_type} • {(event as any).email_campaigns?.subject || "Campaign"}
                   </p>
                 </div>
                 <div className="text-xs text-muted-foreground whitespace-nowrap">

@@ -96,7 +96,7 @@ export function IdentityDashboard() {
         .order("requested_at", { ascending: false });
 
       if (error) throw error;
-      return (data || []) as AccessRequest[];
+      return (data || []) as unknown as AccessRequest[];
     },
     enabled: assets.length > 0,
   });

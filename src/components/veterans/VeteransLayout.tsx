@@ -48,7 +48,7 @@ export function VeteransLayout({ children }: VeteransLayoutProps) {
           .order('last_message_at', { ascending: false })
           .limit(20);
         
-        if (convos) setConversations(convos);
+        if (convos) setConversations(convos as any[]);
       }
     };
     checkAuth();
