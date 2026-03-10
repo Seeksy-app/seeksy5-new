@@ -30,19 +30,44 @@
     <meta name="author" content="Seeksy" />
     
     <style>
-      /* Prevent flash of white background during initial load and navigation */
-      html {
-        background-color: #0a1929;
-      }
-      body {
-        background-color: #0a1929;
+      /* Match the app's actual light theme background to prevent FOUC */
+      html, body, #root {
         margin: 0;
         padding: 0;
         min-height: 100vh;
+        background-color: hsl(220, 20%, 97%);
       }
+      /* Hide content until React + CSS are ready */
       #root {
-        min-height: 100vh;
-        background-color: #0a1929;
+        opacity: 0;
+        transition: opacity 0.1s ease-in;
+      }
+      #root.ready {
+        opacity: 1;
+      }
+      /* Inline loading indicator */
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: hsl(220, 20%, 97%);
+      }
+      #initial-loader .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+        border-radius: 50%;
+        background-color: hsl(217, 91%, 60%);
+        animation: dot-pulse 1s ease-in-out infinite;
+      }
+      #initial-loader .dot:nth-child(2) { animation-delay: 0.15s; }
+      #initial-loader .dot:nth-child(3) { animation-delay: 0.3s; }
+      @keyframes dot-pulse {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1); }
       }
     </style>
 
@@ -62,6 +87,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
+    <div id="initial-loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
