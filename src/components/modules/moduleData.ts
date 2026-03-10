@@ -399,7 +399,7 @@ export const SEEKSY_MODULES: SeeksyModule[] = [
   // Identity & Profile
   {
     id: "my-page",
-    name: "My Page Builder",
+    name: "Shareable Profile Page",
     description: "Build your personal landing page with drag-and-drop sections and themes",
     icon: Layout,
     category: "identity",

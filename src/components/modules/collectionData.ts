@@ -75,7 +75,7 @@ export const SEEKSY_COLLECTIONS: SeeksyCollection[] = [
     icon: Shield,
     color: "#059669",
     bgGradient: "bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100",
-    includedApps: ["my-page", "identity-verification"],
+    includedApps: ["identity-verification", "cloning", "my-page", "broadcast-monitoring", "social-connect", "social-analytics"],
     usersCount: 3200,
   },
   {

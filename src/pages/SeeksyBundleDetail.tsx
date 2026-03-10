@@ -15,6 +15,7 @@ import heroEvents from "@/assets/app-hero-events.jpg";
 import heroCrm from "@/assets/app-hero-crm.jpg";
 import heroAi from "@/assets/app-hero-ai.jpg";
 import heroIdentity from "@/assets/app-hero-identity.jpg";
+import heroNilProtection from "@/assets/app-hero-nil-protection.jpg";
 import heroVideo from "@/assets/app-hero-video.jpg";
 import heroEmail from "@/assets/app-hero-email.jpg";
 import heroPodcasts from "@/assets/app-hero-podcasts.jpg";
@@ -68,7 +69,7 @@ const MODULE_HERO_MAP: Record<string, string> = {
   "proposals": heroProposals,
   "deals": heroDeals,
   "my-page": heroMypage,
-  "identity-verification": heroIdentity,
+  "identity-verification": heroNilProtection,
   "broadcast-monitoring": heroBroadcast,
   "blog": heroBlog,
   "spark-ai": heroSpark,
@@ -105,7 +106,7 @@ const APP_DETAILS: Record<string, { features: string[]; bestFor: string[]; tagli
   "tasks": { tagline: "Create and track tasks with due dates, priorities, and subtasks.", longDescription: "Simple yet powerful task management.", features: ["Task creation", "Priority levels", "Due dates", "Subtasks", "List & board views"], bestFor: ["Individuals", "Teams", "Project managers"] },
   "proposals": { tagline: "Create professional proposals with e-signatures.", longDescription: "Generate branded proposals, get e-signatures, and convert to invoices.", features: ["Proposal templates", "E-signatures", "One-click invoice", "Payment tracking", "Automated reminders"], bestFor: ["Freelancers", "Agencies", "Consultants"] },
   "deals": { tagline: "Track deals through your sales pipeline with stages and values.", longDescription: "Visual deal pipeline with customizable stages.", features: ["Visual pipeline", "Custom stages", "Deal values", "Revenue forecasting", "Activity logging"], bestFor: ["Sales teams", "Business owners", "Account managers"] },
-  "my-page": { tagline: "Build your personal landing page with drag-and-drop sections.", longDescription: "Create a beautiful, branded landing page that showcases your content.", features: ["Drag-and-drop builder", "Custom themes", "Video header support", "CTA buttons", "Analytics tracking"], bestFor: ["Creators", "Influencers", "Personal brands"] },
+  "my-page": { tagline: "Build your shareable profile page with drag-and-drop sections.", longDescription: "Create a beautiful, branded profile page that showcases your content.", features: ["Drag-and-drop builder", "Custom themes", "Video header support", "CTA buttons", "Analytics tracking"], bestFor: ["Creators", "Influencers", "Personal brands"] },
   "identity-verification": { tagline: "Protect your Name, Image, and Likeness with blockchain-verified rights.", longDescription: "Comprehensive NIL protection for creators — verify your voice, face, and likeness on-chain to prevent unauthorized commercial use, deepfakes, and AI replicas.", features: ["Voice & face verification", "AI deepfake protection", "Commercial misappropriation prevention", "Digital replica defense", "On-chain rights certificates"], bestFor: ["Creators", "Public figures", "Voice artists", "Influencers"] },
   "broadcast-monitoring": { tagline: "Monitor platforms for unauthorized use of your voice and content.", longDescription: "AI-powered detection of unauthorized use of your voice and content across platforms.", features: ["AI-powered detection", "Multi-platform scanning", "Real-time alerts", "Violation reports", "Takedown assistance"], bestFor: ["Voice artists", "Podcasters", "Public figures"] },
   "blog": { tagline: "Write, schedule, and publish blog posts with AI assistance.", longDescription: "A full-featured blogging platform with AI-powered writing.", features: ["Rich text editor", "AI writing assistance", "SEO optimization", "Scheduled publishing", "Category management"], bestFor: ["Bloggers", "Content marketers", "SEO professionals"] },
