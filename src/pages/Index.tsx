@@ -11,7 +11,7 @@ import { HeroWorkspaceSection } from "@/components/homepage/HeroWorkspaceSection
 import { InteractiveDemo } from "@/components/homepage/InteractiveDemo";
 import { PlatformPillars } from "@/components/homepage/PlatformPillars";
 import { ModuleBuilder } from "@/components/homepage/ModuleBuilder";
-import { PersonasSection } from "@/components/homepage/PersonasSection";
+
 import { FinalCTA } from "@/components/homepage/FinalCTA";
 import { FooterSection } from "@/components/homepage/FooterSection";
 import { LeadMagnetModal, useLeadMagnetPopup } from "@/components/lead-magnet";
