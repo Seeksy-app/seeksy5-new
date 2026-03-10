@@ -37,29 +37,9 @@ const Comparison = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate("/")}
-              className="gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to Home
-            </Button>
-            <Button 
-              onClick={() => navigate("/auth?mode=signup")}
-              className="bg-gradient-to-r from-brand-gold to-brand-orange hover:opacity-90 text-black font-bold"
-            >
-              Get Started Free
-            </Button>
-          </div>
-        </div>
-      </div>
+      <TopNavigation />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 pt-24">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-gradient-to-r from-brand-gold to-brand-orange text-black">

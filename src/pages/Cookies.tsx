@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { TopNavigation } from "@/components/homepage/TopNavigation";
+import { FooterSection } from "@/components/homepage/FooterSection";
 
 const Cookies = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Link to="/">
-          <Button variant="ghost" className="mb-6">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
+      <TopNavigation />
+      <div className="container mx-auto px-4 py-8 pt-24 max-w-4xl">
 
         <h1 className="text-4xl font-bold mb-6">Cookie Policy</h1>
         <p className="text-sm text-muted-foreground mb-8">Last updated: {new Date().toLocaleDateString()}</p>

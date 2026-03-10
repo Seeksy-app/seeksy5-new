@@ -333,18 +333,7 @@ const Pricing = () => {
         </section>
       </main>
 
-      <footer className="border-t border-border py-8 text-center text-muted-foreground mt-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
-            <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <span className="hidden md:inline">•</span>
-            <a href="/terms" className="hover:text-primary transition-colors">Terms & Conditions</a>
-            <span className="hidden md:inline">•</span>
-            <a href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
-          </div>
-          <p>© 2024 Seeksy. Connecting Your Way.</p>
-        </div>
-      </footer>
+      <FooterSection />
     </div>
   );
 };

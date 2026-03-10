@@ -1,11 +1,14 @@
 import { Shield, Lock, Server, Eye, Bot, Settings, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { TopNavigation } from "@/components/homepage/TopNavigation";
+import { FooterSection } from "@/components/homepage/FooterSection";
 
 const SecurityPublic = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <TopNavigation />
+      <div className="container mx-auto px-4 py-16 pt-24 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
