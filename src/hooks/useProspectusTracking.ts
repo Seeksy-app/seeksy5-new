@@ -14,10 +14,32 @@ export function useProspectusGate() {
   const [email, setEmail] = useState<string | null>(() => {
     return sessionStorage.getItem(EMAIL_KEY);
   });
-  const [sessionId, setSessionId] = useState<string | null>(() => {
+  const [sessionId, setSessionId] = useState<string | null>(null);
+
+  // On mount, validate any stored session still exists in the DB
+  useEffect(() => {
     const stored = sessionStorage.getItem(SESSION_KEY);
-    return stored ? JSON.parse(stored).id : null;
-  });
+    if (!stored) return;
+
+    const parsed = JSON.parse(stored) as ProspectusSession;
+
+    // Verify the session exists in the database
+    (supabase.from("prospectus_sessions") as any)
+      .select("id")
+      .eq("id", parsed.id)
+      .single()
+      .then(({ data, error }: any) => {
+        if (data && !error) {
+          setSessionId(parsed.id);
+        } else {
+          // Session doesn't exist in DB (e.g., after remix) — clear and re-gate
+          sessionStorage.removeItem(SESSION_KEY);
+          sessionStorage.removeItem(EMAIL_KEY);
+          setEmail(null);
+          setSessionId(null);
+        }
+      });
+  }, []);
 
   const startSession = useCallback(async (inputEmail: string) => {
     const trimmed = inputEmail.trim().toLowerCase();
@@ -63,26 +85,31 @@ export function useProspectusPageView(sessionId: string | null, pageName: string
     startTimeRef.current = Date.now();
     trackedRef.current = false;
 
-    // Log the page view
+    // Log the page view — must await or use .then() to execute
     (supabase.from("prospectus_page_views") as any)
       .insert({
         session_id: sessionId,
         page_name: pageName,
         viewed_at: new Date().toISOString(),
       })
-      .then(() => { trackedRef.current = true; });
+      .then(({ error }: any) => {
+        if (error) console.error("Failed to log page view:", error);
+        else trackedRef.current = true;
+      });
 
     return () => {
       // Update time spent on unmount
       if (trackedRef.current && sessionId) {
         const seconds = Math.round((Date.now() - startTimeRef.current) / 1000);
-        // Fire and forget - update session duration
         (supabase.from("prospectus_sessions") as any)
           .update({ 
             duration_seconds: seconds,
             session_end: new Date().toISOString()
           })
-          .eq("id", sessionId);
+          .eq("id", sessionId)
+          .then(({ error }: any) => {
+            if (error) console.error("Failed to update session duration:", error);
+          });
       }
     };
   }, [sessionId, pageName]);
@@ -99,13 +126,19 @@ export function useUpdateSessionDuration(sessionId: string | null) {
       const seconds = Math.round((Date.now() - startTimeRef.current) / 1000);
       (supabase.from("prospectus_sessions") as any)
         .update({ duration_seconds: seconds, session_end: new Date().toISOString() })
-        .eq("id", sessionId);
-    }, 30000); // update every 30s
+        .eq("id", sessionId)
+        .then(({ error }: any) => {
+          if (error) console.error("Failed to update duration:", error);
+        });
+    }, 30000);
 
     const handleUnload = () => {
       const seconds = Math.round((Date.now() - startTimeRef.current) / 1000);
-      const url = `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/prospectus_sessions?id=eq.${sessionId}`;
-      navigator.sendBeacon(url); // best-effort
+      // Final update on unload
+      (supabase.from("prospectus_sessions") as any)
+        .update({ duration_seconds: seconds, session_end: new Date().toISOString() })
+        .eq("id", sessionId)
+        .then(() => {});
     };
 
     window.addEventListener("beforeunload", handleUnload);
@@ -116,7 +149,8 @@ export function useUpdateSessionDuration(sessionId: string | null) {
       const seconds = Math.round((Date.now() - startTimeRef.current) / 1000);
       (supabase.from("prospectus_sessions") as any)
         .update({ duration_seconds: seconds, session_end: new Date().toISOString() })
-        .eq("id", sessionId);
+        .eq("id", sessionId)
+        .then(() => {});
     };
   }, [sessionId]);
 }
