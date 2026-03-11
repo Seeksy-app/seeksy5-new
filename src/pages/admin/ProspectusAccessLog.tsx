@@ -187,6 +187,15 @@ export default function ProspectusAccessLog() {
               <UserCircle className="h-4 w-4" />
               By Person
             </button>
+            <button
+              onClick={() => setView("requests")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                view === "requests" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
+              }`}
+            >
+              <MessageSquare className="h-4 w-4" />
+              Info Requests
+            </button>
           </div>
         </div>
 
