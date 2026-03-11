@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Users, Eye, CheckCircle2, PlusCircle, Check, ArrowUpDown, ExternalLink } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { FooterSection } from "@/components/homepage/FooterSection";
+import { AppDirectoryFooter } from "@/components/footer/AppDirectoryFooter";
 import { SEEKSY_COLLECTIONS, type SeeksyCollection } from "@/components/modules/collectionData";
 import { SEEKSY_MODULES, type SeeksyModule, MODULE_CATEGORIES } from "@/components/modules/moduleData";
 import { EmailGate } from "@/components/app-directory/EmailGate";
