@@ -300,7 +300,7 @@ function AppCard({ module, requested, onRequest }: { module: SeeksyModule; reque
   );
 }
 export default function SeeksyAppDirectory() {
-  const [tab, setTab] = useState<"bundles" | "apps">("bundles");
+  const [tab, setTab] = useState<"bundles" | "apps">("apps");
   const { email, sessionId, startSession } = useProspectusGate();
   const [requestedItems, setRequestedItems] = useState<Set<string>>(new Set());
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
