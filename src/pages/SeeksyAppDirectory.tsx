@@ -13,17 +13,45 @@ import { supabase } from "@/integrations/supabase/client";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
+import { Play, X } from "lucide-react";
 import platformVpa from "@/assets/platform-vpa.png";
+import platformSeeksy from "@/assets/platform-seeksy.jpg";
+import platformSeeksyTv from "@/assets/platform-seeksy-tv.jpg";
+import platformAlchify from "@/assets/platform-alchify.jpg";
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
 interface PlatformItem {
   id: string;
   name: string;
   description: string;
   image: string;
-  url: string;
+  url?: string;
+  videoUrl?: string;
 }
 
 const PLATFORMS: PlatformItem[] = [
+  {
+    id: "seeksy-platform",
+    name: "Seeksy Platform",
+    description: "The all-in-one creator operating system. Manage content, analytics, audience, and monetization from a single dashboard.",
+    image: platformSeeksy,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Seeksy.mp4`,
+  },
+  {
+    id: "seeksy-tv",
+    name: "Seeksy TV",
+    description: "Live streaming and on-demand video platform for creators. Broadcast, schedule, and grow your audience with built-in tools.",
+    image: platformSeeksyTv,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Seeksy TV.mp4`,
+  },
+  {
+    id: "alchify-studio",
+    name: "Alchify Studio",
+    description: "Professional-grade creative production suite. Edit video, mix audio, and produce content with AI-powered tools.",
+    image: platformAlchify,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Alchify.mp4`,
+  },
   {
     id: "vpa-2026",
     name: "Veteran Podcast Awards 2026",
@@ -326,6 +354,7 @@ export default function SeeksyAppDirectory() {
   const [lastRequestedName, setLastRequestedName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortByCategory, setSortByCategory] = useState(false);
+  const [videoPlatform, setVideoPlatform] = useState<PlatformItem | null>(null);
 
   // Track session duration
   useUpdateSessionDuration(sessionId);
@@ -416,29 +445,46 @@ export default function SeeksyAppDirectory() {
 
         {tab === "platforms" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PLATFORMS.map((platform) => (
-              <a
-                key={platform.id}
-                href={platform.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-                onMouseEnter={() => trackCardView(platform.name)}
-              >
-                <Card className="overflow-hidden hover:shadow-lg transition-shadow border border-border/60 h-full">
-                  <div className="relative h-52 overflow-hidden">
-                    <img src={platform.image} alt={platform.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <CardContent className="p-5 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-bold text-foreground">{platform.name}</h3>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+            {PLATFORMS.map((platform) => {
+              const isVideo = !!platform.videoUrl;
+              const Wrapper = isVideo ? 'button' : 'a';
+              const wrapperProps = isVideo
+                ? { onClick: () => { setVideoPlatform(platform); trackCardView(platform.name); } }
+                : { href: platform.url, target: "_blank", rel: "noopener noreferrer" };
+
+              return (
+                <Wrapper
+                  key={platform.id}
+                  {...(wrapperProps as any)}
+                  className="group block text-left"
+                  onMouseEnter={() => trackCardView(platform.name)}
+                >
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow border border-border/60 h-full">
+                    <div className="relative h-52 overflow-hidden">
+                      <img src={platform.image} alt={platform.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+                      {isVideo && (
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center">
+                            <Play className="h-6 w-6 text-primary-foreground fill-primary-foreground" />
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{platform.description}</p>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
+                    <CardContent className="p-5 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-bold text-foreground">{platform.name}</h3>
+                        {isVideo ? (
+                          <Play className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        ) : (
+                          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        )}
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{platform.description}</p>
+                    </CardContent>
+                  </Card>
+                </Wrapper>
+              );
+            })}
           </div>
         ) : tab === "bundles" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -532,6 +578,30 @@ export default function SeeksyAppDirectory() {
           <Button onClick={() => setShowConfirmDialog(false)} className="mt-2 rounded-full">
             Continue Browsing
           </Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Video Demo Dialog */}
+      <Dialog open={!!videoPlatform} onOpenChange={(open) => !open && setVideoPlatform(null)}>
+        <DialogContent className="sm:max-w-4xl p-0 overflow-hidden bg-black border-border">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle className="text-foreground">{videoPlatform?.name} — Demo</DialogTitle>
+            <DialogDescription className="text-muted-foreground text-sm">
+              {videoPlatform?.description}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="w-full aspect-video">
+            {videoPlatform?.videoUrl && (
+              <video
+                key={videoPlatform.id}
+                className="w-full h-full"
+                controls
+                autoPlay
+                playsInline
+                src={videoPlatform.videoUrl}
+              />
+            )}
+          </div>
         </DialogContent>
       </Dialog>
     </div>
