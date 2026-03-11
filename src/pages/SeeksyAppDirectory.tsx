@@ -54,7 +54,24 @@ const PLATFORMS: PlatformItem[] = [
     name: "Alchify Studio",
     description: "Professional-grade creative production suite. Edit video, mix audio, and produce content with AI-powered tools.",
     image: platformAlchify,
+    images: [platformAlchify, platformAlchify2, platformAlchify3],
     videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Alchify.mp4`,
+  },
+  {
+    id: "truckinglane",
+    name: "Trucking Lane",
+    description: "Your AI Co-Pilot that never sleeps. The first AI assistant built exclusively for trucking — answer calls, qualify carriers, and book loads automatically.",
+    image: platformTl,
+    infoPopup: {
+      tagline: "The first AI assistant built exclusively for trucking. Answer calls, qualify carriers, and book loads — automatically. Trusted by dispatch teams nationwide.",
+      highlights: [
+        "24/7 AI Call Handling & Coverage",
+        "Real-Time FMCSA Carrier Verification",
+        "AI Intent Scoring & Lead Prioritization",
+        "50+ Language Support",
+        "Live Analytics Dashboard",
+      ],
+    },
   },
   {
     id: "digitaltovoter",
