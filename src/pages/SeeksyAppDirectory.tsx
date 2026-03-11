@@ -13,17 +13,45 @@ import { supabase } from "@/integrations/supabase/client";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
+import { Play, X } from "lucide-react";
 import platformVpa from "@/assets/platform-vpa.png";
+import platformSeeksy from "@/assets/platform-seeksy.jpg";
+import platformSeeksyTv from "@/assets/platform-seeksy-tv.jpg";
+import platformAlchify from "@/assets/platform-alchify.jpg";
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
 interface PlatformItem {
   id: string;
   name: string;
   description: string;
   image: string;
-  url: string;
+  url?: string;
+  videoUrl?: string;
 }
 
 const PLATFORMS: PlatformItem[] = [
+  {
+    id: "seeksy-platform",
+    name: "Seeksy Platform",
+    description: "The all-in-one creator operating system. Manage content, analytics, audience, and monetization from a single dashboard.",
+    image: platformSeeksy,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Seeksy.mp4`,
+  },
+  {
+    id: "seeksy-tv",
+    name: "Seeksy TV",
+    description: "Live streaming and on-demand video platform for creators. Broadcast, schedule, and grow your audience with built-in tools.",
+    image: platformSeeksyTv,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Seeksy TV.mp4`,
+  },
+  {
+    id: "alchify-studio",
+    name: "Alchify Studio",
+    description: "Professional-grade creative production suite. Edit video, mix audio, and produce content with AI-powered tools.",
+    image: platformAlchify,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Alchify.mp4`,
+  },
   {
     id: "vpa-2026",
     name: "Veteran Podcast Awards 2026",
