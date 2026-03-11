@@ -318,7 +318,8 @@ export default function SeeksyAppDirectory() {
   const trackCardView = (name: string) => {
     if (!sessionId) return;
     (supabase.from("prospectus_page_views") as any)
-      .insert({ session_id: sessionId, page_name: name, viewed_at: new Date().toISOString() });
+      .insert({ session_id: sessionId, page_name: name, viewed_at: new Date().toISOString() })
+      .then(({ error }: any) => { if (error) console.error("Track view error:", error); });
   };
 
   const handleRequestInfo = useCallback((itemName: string) => {
