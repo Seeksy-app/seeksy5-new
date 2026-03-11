@@ -32,13 +32,6 @@ interface PlatformItem {
 
 const PLATFORMS: PlatformItem[] = [
   {
-    id: "seeksy-platform",
-    name: "Seeksy Platform",
-    description: "The all-in-one creator operating system. Manage content, analytics, audience, and monetization from a single dashboard.",
-    image: platformSeeksy,
-    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/Seeksy.mp4`,
-  },
-  {
     id: "seeksy-tv",
     name: "Seeksy TV",
     description: "Live streaming and on-demand video platform for creators. Broadcast, schedule, and grow your audience with built-in tools.",
