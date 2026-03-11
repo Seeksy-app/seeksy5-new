@@ -406,6 +406,28 @@ function AppCard({ module, requested, onRequest }: { module: SeeksyModule; reque
     </Card>
   );
 }
+function RotatingPlatformImage({ images, alt }: { images: string[]; alt: string }) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+  return (
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={index}
+        src={images[index]}
+        alt={alt}
+        className="w-full h-full object-cover object-top absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6 }}
+      />
+    </AnimatePresence>
+  );
+}
+
 export default function SeeksyAppDirectory() {
   const [tab, setTab] = useState<"bundles" | "apps" | "platforms">("apps");
   const { email, sessionId, startSession } = useProspectusGate();
