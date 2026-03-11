@@ -32,6 +32,7 @@ interface PlatformItem {
   name: string;
   description: string;
   image: string;
+  images?: string[];
   url?: string;
   videoUrl?: string;
   infoPopup?: {
