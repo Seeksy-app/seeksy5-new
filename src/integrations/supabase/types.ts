@@ -1585,6 +1585,54 @@ export type Database = {
         }
         Relationships: []
       }
+      module_bundle_relations: {
+        Row: {
+          bundle_module_id: string
+          created_at: string | null
+          id: string
+          related_module_id: string
+        }
+        Insert: {
+          bundle_module_id: string
+          created_at?: string | null
+          id?: string
+          related_module_id: string
+        }
+        Update: {
+          bundle_module_id?: string
+          created_at?: string | null
+          id?: string
+          related_module_id?: string
+        }
+        Relationships: []
+      }
+      module_group_modules: {
+        Row: {
+          created_at: string | null
+          group_id: string
+          id: string
+          module_key: string
+          relationship_type: string | null
+          sort_order: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          group_id: string
+          id?: string
+          module_key: string
+          relationship_type?: string | null
+          sort_order?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          group_id?: string
+          id?: string
+          module_key?: string
+          relationship_type?: string | null
+          sort_order?: number | null
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           category: string | null
@@ -2283,6 +2331,45 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      workspace_modules: {
+        Row: {
+          added_via_collection: string | null
+          created_at: string | null
+          id: string
+          is_pinned: boolean | null
+          is_standalone: boolean | null
+          module_id: string
+          position: number | null
+          settings: Json | null
+          updated_at: string | null
+          workspace_id: string
+        }
+        Insert: {
+          added_via_collection?: string | null
+          created_at?: string | null
+          id?: string
+          is_pinned?: boolean | null
+          is_standalone?: boolean | null
+          module_id: string
+          position?: number | null
+          settings?: Json | null
+          updated_at?: string | null
+          workspace_id: string
+        }
+        Update: {
+          added_via_collection?: string | null
+          created_at?: string | null
+          id?: string
+          is_pinned?: boolean | null
+          is_standalone?: boolean | null
+          module_id?: string
+          position?: number | null
+          settings?: Json | null
+          updated_at?: string | null
+          workspace_id?: string
         }
         Relationships: []
       }
