@@ -422,9 +422,7 @@ export default function SeeksyAppDirectory() {
                 >
                   All Apps
                 </button>
-                {MODULE_CATEGORIES.map((cat) => {
-                  const CatIcon = cat.icon;
-                  return (
+                {MODULE_CATEGORIES.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
@@ -434,11 +432,9 @@ export default function SeeksyAppDirectory() {
                           : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
                       }`}
                     >
-                      {CatIcon && <CatIcon className="h-3.5 w-3.5" />}
                       {cat.name}
                     </button>
-                  );
-                })}
+                ))}
               </div>
             </div>
 
