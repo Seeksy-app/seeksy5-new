@@ -514,25 +514,6 @@ export default function SeeksyAppDirectory() {
               );
             })}
           </div>
-                        </div>
-                      )}
-                    </div>
-                    <CardContent className="p-5 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-bold text-foreground">{platform.name}</h3>
-                        {isVideo ? (
-                          <Play className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                        ) : (
-                          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                        )}
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{platform.description}</p>
-                    </CardContent>
-                  </Card>
-                </Wrapper>
-              );
-            })}
-          </div>
         ) : tab === "bundles" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SEEKSY_COLLECTIONS.map((collection) => (
