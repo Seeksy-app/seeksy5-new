@@ -65,7 +65,14 @@ const PLATFORMS: PlatformItem[] = [
         "Automated Outreach & Follow-ups",
         "Real-Time Performance Dashboard",
       ],
-    },
+  },
+  {
+    id: "yourvabenefits",
+    name: "YourVABenefits",
+    description: "Free calculators, AI-powered claim guidance, and connections to accredited representatives. Get the VA benefits you've earned.",
+    image: platformYvb,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/YourBenefits.mp4`,
+  },
   },
   {
     id: "vpa-2026",
