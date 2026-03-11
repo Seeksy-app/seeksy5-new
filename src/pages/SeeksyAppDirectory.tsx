@@ -580,6 +580,30 @@ export default function SeeksyAppDirectory() {
           </Button>
         </DialogContent>
       </Dialog>
+
+      {/* Video Demo Dialog */}
+      <Dialog open={!!videoPlatform} onOpenChange={(open) => !open && setVideoPlatform(null)}>
+        <DialogContent className="sm:max-w-4xl p-0 overflow-hidden bg-black border-border">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle className="text-foreground">{videoPlatform?.name} — Demo</DialogTitle>
+            <DialogDescription className="text-muted-foreground text-sm">
+              {videoPlatform?.description}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="w-full aspect-video">
+            {videoPlatform?.videoUrl && (
+              <video
+                key={videoPlatform.id}
+                className="w-full h-full"
+                controls
+                autoPlay
+                playsInline
+                src={videoPlatform.videoUrl}
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
