@@ -655,7 +655,7 @@ export default function SeeksyAppDirectory() {
           </>
         )}
       </main>
-      <FooterSection />
+      <AppDirectoryFooter />
 
       {/* Confirmation Dialog */}
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
