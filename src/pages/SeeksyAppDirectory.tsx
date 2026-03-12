@@ -24,6 +24,8 @@ import platformDtv from "@/assets/platform-digitaltovoter.png";
 import platformYvb from "@/assets/platform-yourvabenefits.png";
 import platformWr360 from "@/assets/platform-workready360.png";
 import platformTl from "@/assets/platform-truckinglane.png";
+import platformGovAffairs from "@/assets/platform-governmentaffairs.jpg";
+import platformPcsing from "@/assets/platform-pcsing.jpg";
 import seeksyLogoOrange from "@/assets/seeksy-logo-orange.png";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -112,6 +114,21 @@ const PLATFORMS: PlatformItem[] = [
         "Matched Occupation Recommendations",
       ],
     },
+  },
+  {
+    id: "government-affairs",
+    name: "Government Affairs",
+    description: "The Intelligence Engine for Government Affairs. A complete political intelligence platform for lobbying firms — map access, research staffers, track legislation, and execute strategy.",
+    image: platformGovAffairs,
+    videoUrl: `${SUPABASE_URL}/storage/v1/object/public/demo-videos/GovernmentAffairs.mp4`,
+    url: "https://governmentaffairs.co",
+  },
+  {
+    id: "pcsing",
+    name: "PCSing.us",
+    description: "Plan your PCS with AI. Your AI-powered military relocation assistant — housing, schools, BAH calculators, entitlements, and base-by-base guides all in one place.",
+    image: platformPcsing,
+    url: "https://pcsing.us",
   },
   {
     id: "vpa-2026",
@@ -725,6 +742,16 @@ export default function SeeksyAppDirectory() {
               />
             )}
           </div>
+          {videoPlatform?.url && (
+            <div className="p-4 pt-0 flex justify-end">
+              <a href={videoPlatform.url} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="gap-2">
+                  <ExternalLink className="h-4 w-4" />
+                  Visit Site
+                </Button>
+              </a>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
 
