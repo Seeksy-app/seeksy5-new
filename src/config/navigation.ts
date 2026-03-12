@@ -726,6 +726,13 @@ export const NAVIGATION_CONFIG: {
           "roles": ["admin", "super_admin"]
         },
         {
+          "id": "admin_demo_sessions",
+          "label": "Demo Sessions",
+          "icon": "eye",
+          "path": "/admin/prospectus-log",
+          "roles": ["admin", "super_admin"]
+        },
+        {
           "id": "admin_team_roles",
           "label": "Team & Roles",
           "icon": "users",
