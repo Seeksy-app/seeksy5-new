@@ -79,7 +79,7 @@ export function HeroWorkspaceSection() {
       />
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-[1280px] relative z-10">
         {/* Desktop: Side by side - Decoupled columns */}
         <div
           className="hidden lg:grid items-center"
