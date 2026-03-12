@@ -470,6 +470,7 @@ import AdminAdAnalytics from "./pages/admin/AdminAdAnalytics";
 import OnboardingAdmin from "./pages/admin/OnboardingAdmin";
 import LeadMagnetsAdmin from "./pages/admin/LeadMagnetsAdmin";
 import AdminMilestones from "./pages/admin/AdminMilestones";
+import DevExpenses from "./pages/admin/DevExpenses";
 import ModuleOrganizer from "./pages/admin/ModuleOrganizer";
 import LeadMagnetLanding from "./pages/public/LeadMagnetLanding";
 import LeadMagnetThankYou from "./pages/public/LeadMagnetThankYou";
