@@ -272,8 +272,8 @@ function RequestInfoButton({
             }}
             className={`absolute bottom-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md ${
               requested
-                ? "bg-green-500 text-white"
-                : "bg-white/90 text-muted-foreground hover:bg-primary hover:text-primary-foreground"
+                ? "bg-emerald-500 text-white"
+                : "bg-gradient-to-br from-amber-400 to-orange-500 text-white hover:from-amber-300 hover:to-orange-400 hover:shadow-lg"
             }`}
           >
             {requested ? <Check className="h-4 w-4" /> : <PlusCircle className="h-4 w-4" />}
