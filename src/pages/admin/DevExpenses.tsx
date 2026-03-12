@@ -435,7 +435,7 @@ export default function DevExpenses() {
                 <Badge variant="secondary" className="text-xs">FREE — No fees</Badge>
               </div>
               <a
-                href="https://checkout.seeksy.io/b/9B65kC0yQ6yNddDbZ9dfG08"
+                href="https://checkout.seeksy.io/b/28E9AS3L2cXbb5v5ALdfG09"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
