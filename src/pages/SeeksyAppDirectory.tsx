@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, Eye, CheckCircle2, PlusCircle, Check, ArrowUpDown, ExternalLink } from "lucide-react";
+import { Users, Eye, CheckCircle2, PlusCircle, Check, ArrowUpDown, ExternalLink, Sparkles } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppDirectoryFooter } from "@/components/footer/AppDirectoryFooter";
@@ -24,6 +24,7 @@ import platformDtv from "@/assets/platform-digitaltovoter.png";
 import platformYvb from "@/assets/platform-yourvabenefits.png";
 import platformWr360 from "@/assets/platform-workready360.png";
 import platformTl from "@/assets/platform-truckinglane.png";
+import seeksyLogoOrange from "@/assets/seeksy-logo-orange.png";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
@@ -487,44 +488,67 @@ export default function SeeksyAppDirectory() {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Seeksy App Directory</h1>
-        </div>
+      {/* Premium Hero Header */}
+      <div className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)" }}>
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        
+        {/* Gradient orb */}
+        <div className="absolute top-0 right-0 w-[600px] h-[400px] opacity-20" style={{ background: "radial-gradient(ellipse, hsl(var(--primary)) 0%, transparent 70%)" }} />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+          {/* Top bar: logo + email */}
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <img src={seeksyLogoOrange} alt="Seeksy" className="w-9 h-9 rounded-full" />
+              <span className="text-xl font-bold text-white tracking-tight">Seeksy</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-white/50">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Viewing as <span className="text-white/70 font-medium">{email}</span></span>
+            </div>
+          </div>
 
-        {/* Pill Tabs */}
-        <div className="flex gap-2 mb-8">
-          <button
-            onClick={() => setTab("apps")}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-              tab === "apps"
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
+          {/* Hero content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
           >
-            Apps
-          </button>
-          <button
-            onClick={() => setTab("bundles")}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-              tab === "bundles"
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
-          >
-            Bundles
-          </button>
-          <button
-            onClick={() => setTab("platforms")}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-              tab === "platforms"
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
-          >
-            Platforms
-          </button>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[2px] text-amber-300 border border-amber-400/20 mb-5" style={{ background: "rgba(251,191,36,0.08)" }}>
+              <Sparkles className="h-3 w-3" />
+              App Directory
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight tracking-tight mb-3">
+              35+ AI-first apps.{" "}
+              <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">One ecosystem.</span>
+            </h1>
+            <p className="text-white/50 text-sm sm:text-base max-w-lg leading-relaxed">
+              Browse our complete suite of enterprise-grade applications — built for creators, teams, and businesses ready to scale.
+            </p>
+          </motion.div>
+
+          {/* Tabs inside hero */}
+          <div className="flex gap-1.5 mt-8">
+            {(["apps", "bundles", "platforms"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                  tab === t
+                    ? "bg-white text-slate-900 shadow-lg shadow-white/10"
+                    : "text-white/60 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                {t === "apps" ? "Apps" : t === "bundles" ? "Bundles" : "Platforms"}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
 
         {tab === "platforms" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
