@@ -60,7 +60,7 @@ function HelpCenterHeader() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/kb" className="flex items-center gap-2">
-            <img src="/seeksy-logo.png" alt="Seeksy" className="h-8 w-auto" />
+            <img src="/seeksy-logo-orange.png" alt="Seeksy" className="h-8 w-auto" />
             <span className="text-lg font-semibold text-gray-700">Help Center</span>
           </Link>
           
