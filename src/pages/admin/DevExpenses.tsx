@@ -21,7 +21,7 @@ import {
 
 const LABOR = {
   rate: 250,
-  label: 'Darnell Wyatt — Dev Hours',
+  label: 'Andrew Appleton — Dev Hours',
   months: [
     { month: 'January', workingDays: 20, hours: 160, cost: 40000, holidays: ['New Year\'s Day', 'MLK Day'] },
     { month: 'February', workingDays: 19, hours: 152, cost: 38000, holidays: ['Presidents\' Day'] },
