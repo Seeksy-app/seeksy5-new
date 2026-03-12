@@ -124,9 +124,9 @@ export default function EmailCampaignAnalytics() {
             </Button>
           </div>
         </div>
-        {/* Spark Mascot */}
+        {/* Seeksy Logo */}
         <img 
-          src="/spark/base/idle.png" 
+          src="/seeksy-logo-orange.png" 
           alt="" 
           className="absolute right-8 top-2 w-[60px] h-[60px] opacity-[0.12] pointer-events-none"
         />
