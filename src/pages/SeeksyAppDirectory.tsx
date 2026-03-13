@@ -537,10 +537,20 @@ export default function SeeksyAppDirectory() {
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/20" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end pb-4">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-between py-6">
           {/* Top bar: logo */}
-          <div className="absolute top-4 left-4 sm:left-6 lg:left-8">
+          <div>
             <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">Seeksy</span>
+          </div>
+
+          {/* Headline + Subheadline */}
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-1">
+              Seeksy App Directory
+            </h1>
+            <p className="text-sm text-white/70 max-w-md mx-auto">
+              35+ AI-first workplace applications — available for enterprise licensing, partnership, or acquisition.
+            </p>
           </div>
 
           {/* Tabs at bottom of banner */}
