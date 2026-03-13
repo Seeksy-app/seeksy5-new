@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { HeroWorkspaceBuilder } from "./HeroWorkspaceBuilder";
 import { motion, AnimatePresence } from "framer-motion";
-import heroBg from "@/assets/homepage/hero-workspace.png";
 
 interface PersonaContent {
   bullets: string[];
@@ -61,24 +60,22 @@ export function HeroWorkspaceSection() {
   const navigate = useNavigate();
   const [activePersona, setActivePersona] = useState("creators");
 
+  // Signal that the hero is ready (no image to wait for)
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("seeksy:hero-ready"));
+  }, []);
+
   const currentPersona = personas.find((p) => p.key === activePersona) || personas[0];
 
   return (
     <section
-      className="w-full px-6 relative overflow-hidden"
+      className="w-full px-6 relative overflow-hidden bg-white"
       style={{
         paddingTop: "clamp(96px, 12vh, 160px)",
         paddingBottom: "80px",
         minHeight: "82vh",
       }}
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       <div className="mx-auto max-w-[1280px] relative z-10">
         {/* Desktop: Side by side - Decoupled columns */}
         <div
@@ -107,7 +104,7 @@ export function HeroWorkspaceSection() {
                 fontSize: "72px",
                 lineHeight: 1.02,
                 letterSpacing: "-2.5px",
-                color: "#FFFFFF",
+                color: "#0B1220",
                 maxWidth: "560px",
               }}
             >
@@ -118,7 +115,7 @@ export function HeroWorkspaceSection() {
               style={{
                 fontSize: "20px",
                 lineHeight: 1.55,
-                color: "rgba(255,255,255,0.7)",
+                color: "#4B5563",
                 maxWidth: "540px",
                 marginTop: "18px",
               }}
@@ -140,8 +137,8 @@ export function HeroWorkspaceSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full font-medium bg-transparent"
-                style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#FFFFFF", height: "52px", paddingLeft: "24px", paddingRight: "24px", fontSize: "16px" }}
+                className="rounded-full font-medium"
+                style={{ border: "1px solid #E6EAF2", color: "#0B1220", height: "52px", paddingLeft: "24px", paddingRight: "24px", fontSize: "16px" }}
                 onClick={() => navigate("/auth")}
               >
                 <Play className="mr-2 h-4 w-4" />
@@ -230,7 +227,7 @@ export function HeroWorkspaceSection() {
               style={{
                 fontSize: "40px",
                 lineHeight: 1.0,
-                color: "#FFFFFF",
+                color: "#0B1220",
               }}
             >
               Build your creator{" "}
@@ -240,7 +237,7 @@ export function HeroWorkspaceSection() {
               className="text-base mb-5"
               style={{
                 lineHeight: "26px",
-                color: "rgba(255,255,255,0.7)",
+                color: "#4B5563",
               }}
             >
               Turn tools on as you need them. Pay only for what you use with credits.
@@ -259,8 +256,8 @@ export function HeroWorkspaceSection() {
               <Button
                 size="default"
                 variant="outline"
-                className="rounded-full px-4 h-10 text-sm font-medium bg-transparent text-white"
-                style={{ border: "1px solid rgba(255,255,255,0.3)" }}
+                className="rounded-full px-4 h-10 text-sm font-medium"
+                style={{ border: "1px solid #E6EAF2", color: "#0B1220" }}
                 onClick={() => navigate("/auth")}
               >
                 <Play className="mr-2 h-3.5 w-3.5" />
@@ -268,7 +265,7 @@ export function HeroWorkspaceSection() {
               </Button>
             </div>
 
-            <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <p className="text-xs mb-5" style={{ color: "#9CA3AF" }}>
               Start free with 100 credits • No credit card
             </p>
 
