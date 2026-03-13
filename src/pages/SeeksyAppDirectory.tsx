@@ -493,7 +493,7 @@ function RotatingPlatformImage({ images, alt }: { images: string[]; alt: string 
     </AnimatePresence>
   );
 }
-function SortablePlatformRow({ platform }: { platform: PlatformItem }) {
+function SortablePlatformRow({ platform, onCategoryChange }: { platform: PlatformItem; onCategoryChange?: (id: string, category: string) => void }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: platform.id });
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -511,8 +511,19 @@ function SortablePlatformRow({ platform }: { platform: PlatformItem }) {
           <img src={platform.image} alt={platform.name} className="w-12 h-12 rounded-lg object-cover shrink-0" />
           <div className="flex-1 min-w-0">
             <h4 className="font-semibold text-foreground text-sm truncate">{platform.name}</h4>
-            <p className="text-xs text-muted-foreground truncate">{platform.category}</p>
           </div>
+          {onCategoryChange && (
+            <select
+              value={platform.category}
+              onChange={(e) => onCategoryChange(platform.id, e.target.value)}
+              className="text-xs border border-border rounded-md px-2 py-1 bg-background text-foreground shrink-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {PLATFORM_CATEGORIES.filter(c => c.id !== "all").map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+          )}
         </div>
       </Card>
     </div>
