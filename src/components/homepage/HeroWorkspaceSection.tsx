@@ -252,8 +252,8 @@ export function HeroWorkspaceSection() {
               <Button
                 size="default"
                 variant="outline"
-                className="rounded-full px-4 h-10 text-sm font-medium bg-transparent text-white"
-                style={{ border: "1px solid rgba(255,255,255,0.3)" }}
+                className="rounded-full px-4 h-10 text-sm font-medium"
+                style={{ border: "1px solid #E6EAF2", color: "#0B1220" }}
                 onClick={() => navigate("/auth")}
               >
                 <Play className="mr-2 h-3.5 w-3.5" />
