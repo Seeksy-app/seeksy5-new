@@ -506,6 +506,55 @@ export default function SeeksyAppDirectory() {
   const [videoPlatform, setVideoPlatform] = useState<PlatformItem | null>(null);
   const [infoPlatform, setInfoPlatform] = useState<PlatformItem | null>(null);
   const [selectedPlatformCategory, setSelectedPlatformCategory] = useState<string>("all");
+  const { isAdmin } = useUserRoles();
+  const [platformOrder, setPlatformOrder] = useState<string[]>(PLATFORMS.map(p => p.id));
+  const [isReorderMode, setIsReorderMode] = useState(false);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  // Load saved platform order from app_settings
+  useEffect(() => {
+    supabase
+      .from('app_settings')
+      .select('value')
+      .eq('key', 'platform_order')
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.value && Array.isArray(data.value)) {
+          // Merge: saved order first, then any new platforms not in saved order
+          const savedOrder = data.value as string[];
+          const allIds = PLATFORMS.map(p => p.id);
+          const merged = [
+            ...savedOrder.filter(id => allIds.includes(id)),
+            ...allIds.filter(id => !savedOrder.includes(id)),
+          ];
+          setPlatformOrder(merged);
+        }
+      });
+  }, []);
+
+  const savePlatformOrder = useCallback(async (order: string[]) => {
+    const { error } = await supabase
+      .from('app_settings')
+      .upsert({ key: 'platform_order', value: order as any }, { onConflict: 'key' });
+    if (error) console.error('Failed to save platform order:', error);
+  }, []);
+
+  const handlePlatformDragEnd = useCallback((event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setPlatformOrder(prev => {
+        const oldIndex = prev.indexOf(active.id as string);
+        const newIndex = prev.indexOf(over.id as string);
+        const newOrder = arrayMove(prev, oldIndex, newIndex);
+        savePlatformOrder(newOrder);
+        return newOrder;
+      });
+    }
+  }, [savePlatformOrder]);
 
   // Wait for Supabase auth to settle before rendering
   useEffect(() => {
