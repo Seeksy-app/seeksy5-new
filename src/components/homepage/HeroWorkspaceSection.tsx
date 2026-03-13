@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { HeroWorkspaceBuilder } from "./HeroWorkspaceBuilder";
 import { motion, AnimatePresence } from "framer-motion";
-// Background image removed — homepage uses white background
 
 interface PersonaContent {
   bullets: string[];
