@@ -519,7 +519,7 @@ function SortablePlatformRow({ platform }: { platform: PlatformItem }) {
   );
 }
 
-
+export default function SeeksyAppDirectory() {
   const [tab, setTab] = useState<"bundles" | "apps" | "platforms">("apps");
   const { email, sessionId, startSession } = useProspectusGate();
   const [authReady, setAuthReady] = useState(false);
