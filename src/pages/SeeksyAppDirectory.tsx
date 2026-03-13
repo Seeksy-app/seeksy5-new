@@ -658,7 +658,7 @@ export default function SeeksyAppDirectory() {
     <div className="min-h-screen bg-background">
       {/* Hero Banner - Image Only */}
       <div className="relative overflow-hidden h-64 sm:h-72">
-        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/20" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-between py-6">
