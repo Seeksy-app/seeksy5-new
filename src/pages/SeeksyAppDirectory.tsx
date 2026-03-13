@@ -705,26 +705,27 @@ export default function SeeksyAppDirectory() {
             </p>
           </div>
 
-          {/* Tabs at bottom of banner */}
-          <div className="flex gap-1.5">
-            {(["apps", "bundles", "platforms"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                  tab === t
-                    ? "bg-white text-slate-900 shadow-lg shadow-white/10"
-                    : "text-white/60 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {t === "apps" ? "Apps" : t === "bundles" ? "Bundles" : "Platforms"}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+
+        {/* Tabs below banner in white area */}
+        <div className="flex gap-1.5 mb-8">
+          {(["apps", "bundles", "platforms"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                tab === t
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              {t === "apps" ? "Apps" : t === "bundles" ? "Bundles" : "Platforms"}
+            </button>
+          ))}
+        </div>
 
         {tab === "platforms" ? (
           <>
