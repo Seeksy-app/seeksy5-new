@@ -60,6 +60,11 @@ export function HeroWorkspaceSection() {
   const navigate = useNavigate();
   const [activePersona, setActivePersona] = useState("creators");
 
+  // Signal that the hero is ready (no image to wait for)
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("seeksy:hero-ready"));
+  }, []);
+
   const currentPersona = personas.find((p) => p.key === activePersona) || personas[0];
 
   return (
