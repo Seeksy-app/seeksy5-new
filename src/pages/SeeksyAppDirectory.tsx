@@ -19,6 +19,7 @@ import platformSeeksy from "@/assets/platform-seeksy.jpg";
 import platformSeeksyTv from "@/assets/platform-seeksy-tv.jpg";
 import platformAlchify from "@/assets/platform-alchify.jpg";
 import platformAlchify2 from "@/assets/platform-alchify-2.png";
+import platformEmpowerify from "@/assets/platform-empowerify.png";
 import platformAlchify3 from "@/assets/platform-alchify-3.png";
 import platformDtv from "@/assets/platform-digitaltovoter.png";
 import platformYvb from "@/assets/platform-yourvabenefits.png";
