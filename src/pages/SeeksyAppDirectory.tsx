@@ -38,11 +38,21 @@ interface PlatformItem {
   images?: string[];
   url?: string;
   videoUrl?: string;
+  category: string;
   infoPopup?: {
     tagline: string;
     highlights: string[];
   };
 }
+
+const PLATFORM_CATEGORIES = [
+  { id: "all", name: "All Platforms" },
+  { id: "media", name: "Media & Creative" },
+  { id: "industry", name: "Industry Solutions" },
+  { id: "civic", name: "Civic & Advocacy" },
+  { id: "career", name: "Career & Workforce" },
+  { id: "events", name: "Events & Awards" },
+] as const;
 
 const PLATFORMS: PlatformItem[] = [
   {
