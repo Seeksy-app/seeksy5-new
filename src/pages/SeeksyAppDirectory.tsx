@@ -94,6 +94,7 @@ const PLATFORMS: PlatformItem[] = [
     name: "DigitalToVoter",
     description: "Your AI Campaign Manager That Never Sleeps. AI-powered voter outreach, event scheduling, and real-time insights for political campaigns.",
     image: platformDtv,
+    category: "civic",
     infoPopup: {
       tagline: "Stop juggling spreadsheets and missing opportunities. Our AI handles voter outreach, schedules events, and delivers real-time insights — so you can focus on winning.",
       highlights: [
