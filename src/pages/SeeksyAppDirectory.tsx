@@ -548,6 +548,9 @@ export default function SeeksyAppDirectory() {
     return PLATFORMS.filter(p => p.category === selectedPlatformCategory);
   }, [selectedPlatformCategory]);
 
+  // Wait for auth to settle before rendering to prevent double-mount
+  if (!authReady) return null;
+
   // Email gate — require email before viewing directory
   if (!email) {
     return <EmailGate onSubmit={startSession} />;
