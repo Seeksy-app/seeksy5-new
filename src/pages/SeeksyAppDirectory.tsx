@@ -520,6 +520,11 @@ export default function SeeksyAppDirectory() {
     return modules;
   }, [selectedCategory, sortByCategory]);
 
+  const filteredPlatforms = useMemo(() => {
+    if (selectedPlatformCategory === "all") return PLATFORMS;
+    return PLATFORMS.filter(p => p.category === selectedPlatformCategory);
+  }, [selectedPlatformCategory]);
+
   if (!email) {
     return <EmailGate onSubmit={startSession} />;
   }
