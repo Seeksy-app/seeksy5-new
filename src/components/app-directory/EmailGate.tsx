@@ -33,10 +33,10 @@ export function EmailGate({ onSubmit }: EmailGateProps) {
     <section className="w-full min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-110"
         style={{ backgroundImage: `url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80)` }}
       />
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Content */}
       <motion.div
